@@ -16,16 +16,15 @@
             <h1>寺院登録画面</h1>
         </div>
         <!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
-        <form method="post" th:action="@{/signup}" >
-        <!-- th:object="${signupForm}"> -->
+        <form method="post" th:action="@{/signup}" th:object="${signupForm}"> 
             <table class="table table-bordered table-hover">
                 
                 <tr>
                     <th class="active col-sm-3">寺院ID</th>
                     <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{templeId}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('templeId')}?'has-error'">
+                            <input type="text" class="form-control" th:field="*{templeId}"/> 
+                            <span class="text-danger" th:if="${#fields.hasErrors('templeId')}" th:errors="*{templeId}">寺院IDエラー</span>
                         </div>
                     </td>
                 </tr>
@@ -33,10 +32,10 @@
                 <tr>
                     <th class="active">パスワード(8ケタ以上、32桁未満で入力してください)</th>
                     <td>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('password')}?'has-error'">
                             <!-- th:classappend="${#fields.hasErrors('password')} ? 'has-error'" -->
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{password}"/> -->                         
+                            <input type="text" class="form-control" th:field="*{password}"/>    
+                            <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">パスワードエラー</span>                    
                         </div>
                     </td>
                 </tr>
@@ -44,9 +43,9 @@
                 <tr>
                     <th class="active">寺院名</th>
                     <td>
-                        <div class="form-group">                        
-                            <input type="text" class="form-control"  />
-                            <!-- th:field="*{templeName}" />   -->                  
+                        <div class="form-group" th:classappend="${#fields.hasErrors('templeName')}?'has-error'">                        
+                            <input type="text" class="form-control" th:field="*{templeName}" />                   
+                            <span class="text-danger" th:if="${#fields.hasErrors('templeName')}" th:errors="*{templeName}">寺院名エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -54,9 +53,9 @@
                  <tr>
                     <th class="active">宗派</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{denomination}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('denomination')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{denomination}"/>
+                             <span class="text-danger" th:if="${#fields.hasErrors('denomination')}" th:errors="*{denomination}">宗派名エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -64,9 +63,9 @@
                 <tr>
                     <th class="active">氏名</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{name}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('name')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{name}"/> 
+                         <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">氏名エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -74,9 +73,9 @@
                  <tr>
                     <th class="active">役職（住職、寺庭婦人などのお立場）</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{position}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('position')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{position}"/> 
+                            <span class="text-danger" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">役職エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -84,9 +83,9 @@
                  <tr>
                     <th class="active">郵便番号</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{postalcode}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">                       
+                            <input type="text" class="form-control" pattern="\d{3}-\d{4}" th:field="*{postalcode}"/> 
+                             <span class="text-danger" th:if="${#fields.hasErrors('postalcode')}" th:errors="*{postalcode}">郵便番号エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -94,9 +93,9 @@
                  <tr>
                     <th class="active">住所（番地まで正確にご記入ください）</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="text" class="form-control" />
-                            <!-- th:field="*{adress}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('adress')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{adress}"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}">住所エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -104,15 +103,13 @@
                  <tr>
                     <th class="active">メールアドレス</th>
                     <td>
-                        <div class="form-group">                       
-                            <input type="email" class="form-control" />
-                            <!-- th:field="*{email}"/> -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('email')}?'has-error'">                       
+                            <input type="email" class="form-control" th:field="*{email}"/> 
+                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">メールアドレスエラー</span>
                         </div>
                     </td>
                 </tr>
-                
             </table>       
-            <!-- ユーザー登録ボタン -->
             <button class="btn btn-primary" type="submit">登録</button>
         </form>
     </div>
