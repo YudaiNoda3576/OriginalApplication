@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+
+    <!-- Bootstrapの設定 -->
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+    <title>SignUp</title>
+</head>
+<body>
+    <div class="col-sm-5">
+        <div class="page-header">
+            <h1>寺院登録画面</h1>
+        </div>
+        <!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
+        <form method="post" th:action="@{/signup}" >
+        <!-- th:object="${signupForm}"> -->
+            <table class="table table-bordered table-hover">
+                
+                <tr>
+                    <th class="active col-sm-3">寺院ID</th>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{templeId}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th class="active">パスワード(8ケタ以上、32桁未満で入力してください)</th>
+                    <td>
+                        <div class="form-group">
+                            <!-- th:classappend="${#fields.hasErrors('password')} ? 'has-error'" -->
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{password}"/> -->                         
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th class="active">寺院名</th>
+                    <td>
+                        <div class="form-group">                        
+                            <input type="text" class="form-control"  />
+                            <!-- th:field="*{templeName}" />   -->                  
+                        </div>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <th class="active">宗派</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{denomination}"/> -->
+                        </div>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <th class="active">氏名</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{name}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <th class="active">役職（住職、寺庭婦人などのお立場）</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{position}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <th class="active">郵便番号</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{postalcode}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <th class="active">住所（番地まで正確にご記入ください）</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" />
+                            <!-- th:field="*{adress}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <th class="active">メールアドレス</th>
+                    <td>
+                        <div class="form-group">                       
+                            <input type="email" class="form-control" />
+                            <!-- th:field="*{email}"/> -->
+                        </div>
+                    </td>
+                </tr>
+                
+            </table>       
+            <!-- ユーザー登録ボタン -->
+            <button class="btn btn-primary" type="submit">登録</button>
+        </form>
+    </div>
+</body>
+</html>

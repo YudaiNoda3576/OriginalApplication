@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class LoginController {
+public class SignupController {
 
-	@GetMapping("/login")
-	public String getLogin(Model model) {
-
-		return "register/login";
+	@GetMapping("/signup")
+	public String  getSignUp(Model model) {
+		return "register/signup.html";
 	}
 	
-	@PostMapping("/login")
-	public String postLogin(Model model) {
-		return "redirect:/home";
+	@PostMapping("/signup")
+	public String postSignup(Model model) {
+		return "redirect:/login";
 	}
 }
