@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,11 +22,10 @@ public class TempleService {
 		this.templeDao = templeDao;
 	}
 
-//	@Transactional
-//	public Temple create(Temple temple) {
-//		templeDao.insert(temple);
-//		return temple;
-//	}
+	
+	public List<Temple> findAll() {
+		return  this.templeDao.findAll();
+	}
 	
 	@Transactional
 	public Temple create(Temple temple) {
