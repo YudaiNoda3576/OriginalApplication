@@ -2,45 +2,45 @@ package com.example.demo.entity;
 
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.GeneratedValue;
+import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 import org.seasar.doma.Table;
 
 @Entity
-@Table(name="temple")
+@Table(name = "temple")
 public class Temple {
-
 	@Id
-	@Column(name="temple_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
+
+	@Column(name = "temple_id")
 	private String templeId;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name="temple_name")
+
+	@Column(name = "temple_name")
 	private String templeName;
-	
-	@Column(name="denomination")
+
+	@Column(name = "denomination")
 	private String denomination;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="position")
-	private String  position;
-	
-	@Column(name="postalcode")
+
+	@Column(name = "position")
+	private String position;
+
+	@Column(name = "postalcode")
 	private String postalcode;
-	
-	@Column(name="adress")
+
+	@Column(name = "adress")
 	private String adress;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-
-	
-	
-
-
 
 	public String getTempleId() {
 		return templeId;
@@ -113,5 +113,5 @@ public class Temple {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

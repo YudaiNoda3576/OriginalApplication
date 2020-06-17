@@ -7,6 +7,14 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 public class TempleForm {
+	private Integer id;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	@NotBlank(groups = ValidGroup1.class)
 	private String templeId;
 	
