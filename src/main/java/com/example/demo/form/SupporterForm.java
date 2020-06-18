@@ -2,45 +2,48 @@ package com.example.demo.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class SupporterForm {
 
-	private Integer supporter_id;
-	@NotBlank
-	private String supporter_name;
-	@NotBlank
-	private String owner_name;
-	@NotBlank
+	private Integer supporterId;
+	@NotBlank(groups = ValidGroup1.class)
+	private String supporterName;
+	@NotBlank(groups = ValidGroup1.class)
+	private String ownerName;
+	@NotBlank(groups = ValidGroup1.class)
+	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", groups = ValidGroup2.class)
 	private String postalcode;
-	@NotBlank
+	@NotBlank(groups = ValidGroup1.class)
 	private String adress;
-	
+	@NotBlank(groups = ValidGroup1.class)
 	private String phoneNumber;
 	@Email
 	private String email;
 
-	public Integer getSupporter_id() {
-		return supporter_id;
+	
+	public Integer getSupporterId() {
+		return supporterId;
 	}
 
-	public void setSupporter_id(Integer supporter_id) {
-		this.supporter_id = supporter_id;
+	public void setSupporterId(Integer supporterId) {
+		this.supporterId = supporterId;
 	}
 
-	public String getSupporter_name() {
-		return supporter_name;
+	public String getSupporterName() {
+		return supporterName;
 	}
 
-	public void setSupporter_name(String supporter_name) {
-		this.supporter_name = supporter_name;
+	public void setSupporterName(String supporterName) {
+		this.supporterName = supporterName;
 	}
 
-	public String getOwner_name() {
-		return owner_name;
+	public String getOwnerName() {
+		return ownerName;
 	}
 
-	public void setOwner_name(String owner_name) {
-		this.owner_name = owner_name;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 
 	public String getPostalcode() {

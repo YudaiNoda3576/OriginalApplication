@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.SupporterDao;
 import com.example.demo.entity.Supporter;
@@ -21,6 +22,12 @@ public class SupporterService {
 	
 	public List<Supporter> findAll() {
 		return  this.supporterDao.findAll();
+	}
+	
+	@Transactional
+	public Supporter insert(Supporter supporter) {
+		supporterDao.insert(supporter);
+		return supporter;
 	}
 	
 	
