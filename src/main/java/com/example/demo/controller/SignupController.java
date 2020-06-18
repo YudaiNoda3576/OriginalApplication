@@ -55,6 +55,6 @@ public class SignupController {
 		templeService.create(temple);
 		
 		redirectAttributes.addFlashAttribute("success","登録が完了しました");
-		return "redirect:/login";
+		return "redirect:/signup";
 	}
 }

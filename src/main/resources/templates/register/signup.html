@@ -15,6 +15,7 @@
         <div class="page-header">
             <h1>寺院登録画面</h1>
         </div>
+        <h3 style="color: blue;" th:text="${success}"></h3>
         <h3 style="color: red;" th:text="${failed}"></h3>
         <!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
         <form method="post" th:action="@{/signup}" th:object="${templeForm}"> 
@@ -111,6 +112,7 @@
                 </tr>
             </table>       
             <button class="btn btn-primary" type="submit">登録</button>
+            <a href="/login">戻る</a>
         </form>
     </div>
 </body>

@@ -12,7 +12,7 @@ import com.example.demo.entity.Temple;
 import com.example.demo.service.TempleService;
 
 @Controller
-@RequestMapping("admin/temples")
+@RequestMapping("/")
 public class TempleController {
 
 	private final TempleService templeService;
