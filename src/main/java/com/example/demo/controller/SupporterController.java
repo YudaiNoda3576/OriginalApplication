@@ -12,7 +12,7 @@ import com.example.demo.entity.Supporter;
 import com.example.demo.service.SupporterService;
 
 @Controller
-@RequestMapping("/supporter")
+@RequestMapping("/")
 public class SupporterController {
 
 	private final SupporterService supporterService;
