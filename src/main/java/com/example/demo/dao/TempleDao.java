@@ -19,4 +19,7 @@ public interface TempleDao {
 	@Select
 	List<Temple> findAll();
 
+	@Select
+	Temple findByLoginId(String templeId);
+
 }

@@ -43,4 +43,9 @@ public class TempleService {
 		templeDao.insert(newTemple);
 		return temple;
 	}
+
+
+	public Temple findByLoginId(String templeId)  {
+		return templeDao.findByLoginId(templeId);
+	}
 }
