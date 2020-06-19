@@ -35,8 +35,19 @@ public class Supporter {
 	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "temple_id")
+	private Integer templeId;
 
 	
+
+	public Integer getTempleId() {
+		return templeId;
+	}
+
+	public void setTempleId(Integer templeId) {
+		this.templeId = templeId;
+	}
 
 	public Integer getSupporterId() {
 		return supporterId;

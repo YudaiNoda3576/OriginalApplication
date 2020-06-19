@@ -9,14 +9,14 @@ import org.seasar.doma.boot.ConfigAutowireable;
 
 import com.example.demo.entity.Supporter;
 
-
 @Dao
 @ConfigAutowireable
 public interface SupporterDao {
 
-	@Select
-	List<Supporter> findAll();
-	
 	@Insert
 	int insert(Supporter supporter);
+
+	@Select
+	List<Supporter> findByTempleId(Integer templeId);
+
 }

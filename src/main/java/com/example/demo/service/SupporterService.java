@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +21,7 @@ public class SupporterService {
 		this.supporterDao = supporterDao;
 	}
 	
-	public List<Supporter> findAll() {
-		return  this.supporterDao.findAll();
-	}
+
 	
 	@Transactional
 	public Supporter insert(Supporter supporter) {
@@ -30,5 +29,10 @@ public class SupporterService {
 		return supporter;
 	}
 	
+	public List<Supporter> findByTempleId(Integer templeId) {
+		
+		return this.supporterDao.findByTempleId(templeId);
+		
+	}
 	
 }

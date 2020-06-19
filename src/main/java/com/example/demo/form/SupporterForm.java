@@ -21,7 +21,6 @@ public class SupporterForm {
 	@Email
 	private String email;
 
-	
 	public Integer getSupporterId() {
 		return supporterId;
 	}
@@ -77,7 +76,5 @@ public class SupporterForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+
 }
