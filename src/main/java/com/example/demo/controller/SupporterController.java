@@ -43,7 +43,7 @@ public class SupporterController {
 	public String List(Model model,@AuthenticationPrincipal UserDetails userDetails) {
 		Temple temple = templeService.findByLoginId(userDetails.getUsername());
 		List<Supporter> supporterList = supporterService.findByTempleId(temple.getId());
-		model.addAttribute("contents", "supporter/supporterList ::supporterList_contents");
+		model.addAttribute("contents", "supporter/supporterList :: supporterList_contents");
 		model.addAttribute("supporterList", supporterList);
 
 		return "home/homeLayout";

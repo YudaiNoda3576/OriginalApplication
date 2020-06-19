@@ -19,12 +19,12 @@ import com.example.demo.service.TempleService;
 
 @Controller
 @RequestMapping("/")
-public class SignupController {
+public class TempleController {
 	
 	private final TempleService templeService;
 	
 	@Autowired
-	public SignupController(TempleService templeService) {
+	public TempleController(TempleService templeService) {
 		this.templeService = templeService;
 	}
 
