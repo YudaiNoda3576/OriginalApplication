@@ -23,10 +23,21 @@ public class Worship {
 	
 	@Column(name = "schedule")
 	private LocalDateTime schedule;
+	
+	@Column(name = "remark")
+	private String remark;
+
 
 	@Column(name = "supporter_id")
 	private Integer supporterId;
 
+	public String getRemark() {
+		return remark;
+	}
+	
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	public Integer getWorshipId() {
 		return worshipId;
 	}
