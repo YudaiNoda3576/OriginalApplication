@@ -18,9 +18,9 @@
 		th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="text-danger">ログインエラーメッセージ</p>
 		<!-- <h3 style="color: blue;" th:text="${success}"></h3> -->
 		
-		<label>寺院ID</label> <input type="text" name="templeId"/><br /> <br />
+		<label th:text="#{templeId}">寺院ID</label> <input type="text" name="templeId"/><br /> <br />
 		
-		<label>パスワード</label> <input type="password" name="password"/><br /> <br />
+		<label th:text="#{password}">パスワード</label> <input type="password" name="password"/><br /> <br />
 		
 		<!--  CSRF対策用トークン -->
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

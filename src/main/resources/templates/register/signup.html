@@ -22,7 +22,7 @@
             <table class="table table-bordered table-hover">
                 
                 <tr>
-                    <th class="active col-sm-3">寺院ID</th>
+                    <th class="active col-sm-3" th:text="#{templeId}">寺院ID</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('templeId')}?'has-error'">
                             <input type="text" class="form-control" th:field="*{templeId}"/> 
@@ -32,7 +32,7 @@
                 </tr>
                 
                 <tr>
-                    <th class="active">パスワード(8ケタ以上、32桁未満で入力してください)</th>
+                    <th class="active" th:text="#{password}">パスワード(8ケタ以上、32桁未満で入力してください)</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('password')}?'has-error'">
                             <input type="text" class="form-control" th:field="*{password}"/>    
@@ -42,7 +42,7 @@
                 </tr>
                 
                 <tr>
-                    <th class="active">寺院名</th>
+                    <th class="active" th:text="#{templeName}">寺院名</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('templeName')}?'has-error'">                        
                             <input type="text" class="form-control" th:field="*{templeName}" />                   
@@ -52,7 +52,7 @@
                 </tr>
                 
                  <tr>
-                    <th class="active">宗派</th>
+                    <th class="active" th:text="#{denomination}">宗派</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('denomination')}?'has-error'">                       
                             <input type="text" class="form-control" th:field="*{denomination}"/>
@@ -62,7 +62,7 @@
                 </tr>
                
                 <tr>
-                    <th class="active">氏名</th>
+                    <th class="active" th:text="#{name}">氏名</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('name')}?'has-error'">                       
                             <input type="text" class="form-control" th:field="*{name}"/> 
@@ -72,7 +72,7 @@
                 </tr>
                 
                  <tr>
-                    <th class="active">役職（住職、寺庭婦人などのお立場）</th>
+                    <th class="active" th:text="#{position}">役職（住職、寺庭婦人などのお立場）</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('position')}?'has-error'">                       
                             <input type="text" class="form-control" th:field="*{position}"/> 
@@ -82,7 +82,7 @@
                 </tr>
                 
                  <tr>
-                    <th class="active">郵便番号</th>
+                    <th class="active" th:text="#{postalcode}">郵便番号</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">                       
                             <input type="text" class="form-control" pattern="\d{3}-\d{4}" th:field="*{postalcode}"/> 
@@ -92,7 +92,7 @@
                 </tr>
                 
                  <tr>
-                    <th class="active">住所（番地まで正確にご記入ください）</th>
+                    <th class="active" th:text="#{adress}">住所（番地まで正確にご記入ください）</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('adress')}?'has-error'">                       
                             <input type="text" class="form-control" th:field="*{adress}"/>
@@ -102,7 +102,7 @@
                 </tr>
                 
                  <tr>
-                    <th class="active">メールアドレス</th>
+                    <th class="active" th:text="#{email}">メールアドレス</th>
                     <td>
                         <div class="form-group" th:classappend="${#fields.hasErrors('email')}?'has-error'">                       
                             <input type="email" class="form-control" th:field="*{email}"/> 
