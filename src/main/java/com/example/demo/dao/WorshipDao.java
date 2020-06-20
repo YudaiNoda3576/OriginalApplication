@@ -6,7 +6,7 @@ import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
 
-import com.example.demo.entity.Supporter_Worship;
+import com.example.demo.entity.SupporterWorship;
 
 
 
@@ -15,5 +15,5 @@ import com.example.demo.entity.Supporter_Worship;
 public interface WorshipDao {
 		
 	@Select
-	List<Supporter_Worship> findScheduleWithSupporter(); 
+	List<SupporterWorship> findScheduleWithSupporter(); 
 }

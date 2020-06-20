@@ -13,10 +13,10 @@
 		</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
-				<th class="info col-sm-2">檀徒氏名</th>
-				<th class="info col-sm-2">お参り</th>
-				<th class="info col-sm-2">日時</th>
-				<th class="info col-sm-2">備考</th>
+				<th class="info col-sm-2" th:text="#{supporterName}">檀徒氏名</th>
+				<th class="info col-sm-2" th:text="#{worship}">お参り</th>
+				<th class="info col-sm-2" th:text="#{schedule}">日時</th>
+				<th class="info col-sm-2" th:text="#{remark}">備考</th>
 			</tr>
 			<tr th:each="worship : ${worshipList}">
 				<td th:text="${worship.supporterName}"></td>

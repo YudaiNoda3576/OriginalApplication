@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Supporter;
-import com.example.demo.entity.Supporter_Worship;
+import com.example.demo.entity.SupporterWorship;
 
 import com.example.demo.service.TempleService;
 import com.example.demo.service.WorshipService;
@@ -25,7 +25,7 @@ public class WorshipController {
 
 	@GetMapping("/schedule")
 	public String getSchedule(Model model) {
-		List<Supporter_Worship> worshipList = worshipService.findScheduleWithSupporter();
+		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
 		model.addAttribute("contents", "worship/worshipList :: worshipList_contents");
 		model.addAttribute("worshipList", worshipList);
 

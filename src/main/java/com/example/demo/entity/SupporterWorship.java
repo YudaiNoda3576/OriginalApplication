@@ -6,7 +6,7 @@ import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 
 @Entity
-public class Supporter_Worship {
+public class SupporterWorship {
 
 	@Column(name = "supporter_name")
 	private String supporterName;
