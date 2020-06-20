@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.WorshipDao;
-import com.example.demo.entity.Worship;
+import com.example.demo.entity.Supporter_Worship;
+
 
 @Service
 public class WorshipService {
@@ -14,7 +15,8 @@ public class WorshipService {
 	@Autowired
 	WorshipDao worshipDao;
 
-	public List<Worship> findBySupporterId(Integer supporterId) {
-		return this.worshipDao.findBySupporterId(supporterId);
+	
+	public List<Supporter_Worship> findScheduleWithSupporter() {
+		return this.worshipDao.findScheduleWithSupporter();
 	}
 }
