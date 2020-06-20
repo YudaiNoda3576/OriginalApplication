@@ -24,7 +24,7 @@
 				th:object="${supporterForm}">
 				<table class="table table-bordered table-hover">
 					<tr>
-						<th class="active">檀信徒氏名</th>
+						<th class="active" th:text="#{supporterName}">檀信徒氏名</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('supporterName')}?'has-error'">
@@ -37,7 +37,7 @@
 					</tr>
 
 					<tr>
-						<th class="active">施主名</th>
+						<th class="active" th:text="#{ownerName}">施主名</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('ownerName')}?'has-error'">
@@ -50,7 +50,7 @@
 					</tr>
 
 					<tr>
-						<th class="active">郵便番号</th>
+						<th class="active" th:text="#{postalcode}">郵便番号</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">
@@ -63,7 +63,7 @@
 					</tr>
 
 					<tr>
-						<th class="active">住所</th>
+						<th class="active" th:text="#{adress}">住所</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('adress')}?'has-error'">
@@ -75,7 +75,7 @@
 					</tr>
 
 					<tr>
-						<th class="active">電話番号</th>
+						<th class="active" th:text="#{phoneNumber}">電話番号</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('phoneNumber')}?'has-error'">
@@ -88,7 +88,7 @@
 					</tr>
 
 					<tr>
-						<th class="active">メールアドレス</th>
+						<th class="active" th:text="#{email}">メールアドレス</th>
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('email')}?'has-error'">
