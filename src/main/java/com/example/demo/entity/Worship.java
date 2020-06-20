@@ -27,7 +27,6 @@ public class Worship {
 	@Column(name = "remark")
 	private String remark;
 
-
 	@Column(name = "supporter_id")
 	private Integer supporterId;
 

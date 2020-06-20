@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Worship</title>
+<!-- Bootstrapの設定 -->
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div th:fragment="worshipRegister_contents">
+		<h1>お参り予定登録</h1>
+		<h3 style="color: blue;" th:text="${success}">登録が完了しました</h3>
+		<h3 style="color: red; "th:text="${failed}">登録が失敗しました</h3>
+		<form method="POST" th:action="@{/worship}" th:object="${worshipForm}">
+			<label>檀徒ID：</label> <input type="text" name="supporterId" th:value="*{supporterId}" /><br>
+			
+			<label>お参りの種類（選択してください）：</label> <select name="worshipType">
+				<option th:each="worshipType : ${worshipTypes}"
+					th:value="${worshipType.value}" th:text="${worshipType.value}"
+					th:selected="${worshipType.value} == *{worshipType}"></option>
+			</select><br> 
+			
+			<label>日時：</label> <input type="datetime-local" name="schedule" th:value="*{schedule}" /><br>
+			<div th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}"></div>
+
+			<div class="form-group">
+				<label for="textarea1">備考:</label>
+				<textarea id="textarea1" class="form-control" name="remark"
+					th:value="*{remark}"></textarea>
+			</div>
+			<div th:if="${#fields.hasErrors('remark')}" th:errors="*{remark}"></div>
+			
+			<button class="btn btn-primary" type="submit">登録</button>
+		</form>
+	</div>
+</body>
+</html>
