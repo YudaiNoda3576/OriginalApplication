@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dao.WorshipDao;
-import com.example.demo.entity.Supporter;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 
