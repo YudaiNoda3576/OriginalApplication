@@ -6,6 +6,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class WorshipForm {
@@ -20,10 +21,10 @@ public class WorshipForm {
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime schedule;
 	
-	@NotBlank(groups = ValidGroup1.class)
+	@Length(min=0, max=500,groups = ValidGroup1.class)
 	private String remark;
 	
-	@NotBlank(groups = ValidGroup1.class)
+	@NotNull(groups = ValidGroup1.class)
 	private Integer supporterId;
 	
 	

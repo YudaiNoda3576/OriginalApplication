@@ -15,23 +15,26 @@
 		<h3 style="color: blue;" th:text="${success}">登録が完了しました</h3>
 		<h3 style="color: red; "th:text="${failed}">登録が失敗しました</h3>
 		<form method="POST" th:action="@{/worship}" th:object="${worshipForm}">
-			<label>檀徒ID：</label> <input type="text" name="supporterId" th:value="*{supporterId}" /><br>
-			
-			<label>お参りの種類（選択してください）：</label> <select name="worshipType">
+		
+			<label th:text="#{supporterId}">檀徒ID：</label> <input type="text" name="supporterId" th:value="*{supporterId}" /><br>
+			<span class="text-danger" th:if="${#fields.hasErrors('supporterId')}" th:errors="*{supporterId}"></span> 
+			<br>
+			<label th:text="#{worshipType}">お参りの種類（選択してください）：</label> <select name="worshipType">
 				<option th:each="worshipType : ${worshipTypes}"
 					th:value="${worshipType.value}" th:text="${worshipType.value}"
 					th:selected="${worshipType.value} == *{worshipType}"></option>
-			</select><br> 
+			</select><br>
+			<span class="text-danger" th:if="${#fields.hasErrors('worshipType')}" th:errors="*{worshipType}"></span> 
 			
-			<label>日時：</label> <input type="datetime-local" name="schedule" th:value="*{schedule}" /><br>
-			<div th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}"></div>
+			<label th:text="#{schedule}">日時：</label> <input type="datetime-local" name="schedule" th:value="*{schedule}" /><br>
+			<span class="text-danger" th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}"></span>
 
 			<div class="form-group">
-				<label for="textarea1">備考:</label>
+				<label th:text="#{remark}" for="textarea1">備考:</label>
 				<textarea id="textarea1" class="form-control" name="remark"
 					th:value="*{remark}"></textarea>
 			</div>
-			<div th:if="${#fields.hasErrors('remark')}" th:errors="*{remark}"></div>
+			<span class="text-danger" th:if="${#fields.hasErrors('remark')}" th:errors="*{remark}"></span>
 			
 			<button class="btn btn-primary" type="submit">登録</button>
 		</form>

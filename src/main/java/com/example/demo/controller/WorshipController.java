@@ -19,7 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
+import com.example.demo.form.GroupOrder;
 import com.example.demo.form.WorshipForm;
+import com.example.demo.service.IdNotExistException;
 import com.example.demo.service.TempleService;
 import com.example.demo.service.WorshipService;
 
@@ -51,9 +53,9 @@ public class WorshipController {
 	
 	
 	@PostMapping("/worship")
-	public String postSchedule(@ModelAttribute @Validated WorshipForm worshipForm, 
+	public String postSchedule(@ModelAttribute @Validated(GroupOrder.class) WorshipForm worshipForm, 
 			BindingResult bindingResult, Model model, 
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes) throws IdNotExistException {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("failed", "登録に失敗しました");
 			return getWorship(worshipForm, model);
