@@ -46,10 +46,10 @@ public class TempleController {
 		temple.setPassword(templeForm.getPassword());
 		temple.setTempleName(templeForm.getTempleName());
 		temple.setDenomination(templeForm.getDenomination());
-		temple.setName(templeForm.getName());
+		temple.setMonkName(templeForm.getMonkName());
 		temple.setPosition(templeForm.getPosition());
 		temple.setPostalcode(templeForm.getPostalcode());
-		temple.setAdress(templeForm.getAdress());
+		temple.setAddress(templeForm.getAddress());
 		temple.setEmail(templeForm.getEmail());
 		
 		templeService.create(temple);
