@@ -16,8 +16,7 @@ public interface TempleDao {
 	@Insert
 	int insert(Temple temple);
 	
-	@Select
-	List<Temple> findAll();
+
 
 	@Select
 	Temple findByLoginId(String templeId);
