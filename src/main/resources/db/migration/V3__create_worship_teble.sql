@@ -1,1 +1,0 @@
-ALTER TABLE supporter DROP FOREIGN KEY temple_id;
