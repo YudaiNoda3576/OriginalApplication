@@ -7,7 +7,7 @@ CREATE TABLE `supporter`
     `adress` varchar(255) NOT NULL,
     `phonenumber` varchar(255) NOT NULL,
     `email`     varchar(255) NOT NULL,
-    `temple_id` int,
-    foreign key temple_id (supporter) references id(temple),
-    PRIMARY KEY (`id`)
+    `temple_id` int NOT NULL,
+    foreign key supporter(temple_id) references temple(id),
+    PRIMARY KEY (`supporter_id`)
 );
