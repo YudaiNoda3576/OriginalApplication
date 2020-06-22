@@ -35,4 +35,8 @@ public class SupporterService {
 		
 	}
 	
+	public Supporter findById() {
+		return this.supporterDao.findById();
+	}
+	
 }

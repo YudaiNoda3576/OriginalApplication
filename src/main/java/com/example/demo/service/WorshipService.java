@@ -17,6 +17,9 @@ public class WorshipService {
 
 	@Autowired
 	WorshipDao worshipDao;
+	@Autowired
+	SupporterService supporterService;
+	
 
 	
 	public List<SupporterWorship> findScheduleWithSupporter() {
@@ -24,16 +27,16 @@ public class WorshipService {
 	}
 	
 	@Transactional
-	public Worship insert(Worship worship) throws IdNotExistException {
-		Supporter supporter = new Supporter();  
-		Worship newWorship = new Worship();
-		if(worship.getSupporterId() == supporter.getSupporterId()) {
+	public Worship insert(Worship worship) {  
+		Worship newWorship = new Worship();  
+//		存在チェック　そのIDは存在するのか？というチェック
+		if(supporterService.findById() != null) {
 		newWorship.setWorshipType(worship.getWorshipType());
 		newWorship.setSchedule(worship.getSchedule());
 		newWorship.setRemark(worship.getRemark());
 		newWorship.setSupporterId(worship.getSupporterId());
 		worshipDao.insert(newWorship);
-		return worship;
+		return newWorship;
 	} else {
 		throw new IdNotExistException("指定されたIDの檀徒は存在しません");
 	}

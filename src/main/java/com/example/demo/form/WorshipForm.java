@@ -12,22 +12,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class WorshipForm {
 
 	private Integer worshipId;
-	
+
 	@NotBlank(groups = ValidGroup1.class)
 	private String worshipType;
-	
+
 	@NotNull(groups = ValidGroup1.class)
-    @Future (groups = ValidGroup2.class)
+	@Future(groups = ValidGroup2.class)
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime schedule;
-	
-	@Length(min=0, max=500,groups = ValidGroup1.class)
+
+	@Length(min = 0, max = 500, groups = ValidGroup1.class)
 	private String remark;
-	
+
 	@NotNull(groups = ValidGroup1.class)
 	private Integer supporterId;
-	
-	
 
 	public Integer getSupporterId() {
 		return supporterId;
@@ -68,6 +66,5 @@ public class WorshipForm {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
-	
+
 }

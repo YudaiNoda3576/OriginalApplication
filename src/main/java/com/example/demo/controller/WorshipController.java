@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.LinkedHashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,6 @@ import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 import com.example.demo.form.GroupOrder;
 import com.example.demo.form.WorshipForm;
-import com.example.demo.service.IdNotExistException;
 import com.example.demo.service.TempleService;
 import com.example.demo.service.WorshipService;
 
@@ -55,7 +55,7 @@ public class WorshipController {
 	@PostMapping("/worship")
 	public String postSchedule(@ModelAttribute @Validated(GroupOrder.class) WorshipForm worshipForm, 
 			BindingResult bindingResult, Model model, 
-			RedirectAttributes redirectAttributes) throws IdNotExistException {
+			RedirectAttributes redirectAttributes) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("failed", "登録に失敗しました");
 			return getWorship(worshipForm, model);
@@ -82,4 +82,6 @@ public class WorshipController {
 		map.put(7, "七回忌");
 		return map;
 	}
+	
+	
 }

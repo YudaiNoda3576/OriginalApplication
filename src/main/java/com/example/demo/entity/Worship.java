@@ -18,6 +18,7 @@ public class Worship {
 	@Column(name = "worship_id")
 	private Integer worshipId;
 	
+//	Enum 値を変換　Domaの機能　樋口さんの参考
 	@Column(name = "worship_type")
 	private String worshipType;
 	
@@ -29,6 +30,7 @@ public class Worship {
 
 	@Column(name = "supporter_id")
 	private Integer supporterId;
+
 
 	public String getRemark() {
 		return remark;

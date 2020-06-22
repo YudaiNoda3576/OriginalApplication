@@ -40,7 +40,6 @@ public class Supporter {
 	private Integer templeId;
 
 	
-
 	public Integer getTempleId() {
 		return templeId;
 	}
@@ -104,5 +103,5 @@ public class Supporter {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }
