@@ -60,6 +60,8 @@ public class WorshipController {
 			model.addAttribute("failed", "登録に失敗しました");
 			return getWorship(worshipForm, model);
 		}
+//　　　 SupoortIdが（supportテーブルにあるか）確認する worship
+//		findByIdで取得した結果が存在するならば、下記の処理を実行↓
 		Worship worship = new Worship();
 		worship.setWorshipType(worshipForm.getWorshipType());
 		worship.setSchedule(worshipForm.getSchedule());

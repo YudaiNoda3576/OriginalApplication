@@ -28,6 +28,8 @@ public class WorshipService {
 	public List<SupporterWorship> findScheduleWithSupporter() {
 		return this.worshipDao.findScheduleWithSupporter();
 	}
+//	例外のハンドリングは基本的にController
+//	Serviceはシンプルに記述　→　誰に使われるか分からない/できるだけ曖昧に書く
 	
 	@Transactional
 	public Worship insert(Worship worship) {  
@@ -44,10 +46,4 @@ public class WorshipService {
 //		throw new IdNotExistException("指定されたIDの檀徒は存在しません");
 //	}
   }
-
-//	private static boolean isExistSupporterId() {
-//		supporterDao.findSupporterId();
-//		
-//		return false;
-//	}
 }

@@ -23,7 +23,7 @@ public class HomeController {
 	 public String getHome(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 		Temple temple = templeService.findByLoginId(userDetails.getUsername());
 		model.addAttribute("contents", "home/home :: home_contents");
-		model.addAttribute("temple", temple.getName());
+		model.addAttribute("temple", temple.getMonkName());
 		return "home/homeLayout.html";
 	}
 	

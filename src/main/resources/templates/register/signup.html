@@ -62,11 +62,11 @@
                 </tr>
                
                 <tr>
-                    <th class="active" th:text="#{name}">氏名</th>
+                    <th class="active" th:text="#{monkName}">氏名</th>
                     <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('name')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{name}"/> 
-                         <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">氏名エラー</span>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('monkName')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{monkName}"/> 
+                         <span class="text-danger" th:if="${#fields.hasErrors('monkName')}" th:errors="*{monkName}">氏名エラー</span>
                         </div>
                     </td>
                 </tr>
@@ -92,11 +92,11 @@
                 </tr>
                 
                  <tr>
-                    <th class="active" th:text="#{adress}">住所（番地まで正確にご記入ください）</th>
+                    <th class="active" th:text="#{address}">住所（番地まで正確にご記入ください）</th>
                     <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('adress')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{adress}"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}">住所エラー</span>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('address')}?'has-error'">                       
+                            <input type="text" class="form-control" th:field="*{address}"/>
+                        <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">住所エラー</span>
                         </div>
                     </td>
                 </tr>

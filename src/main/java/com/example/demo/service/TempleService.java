@@ -24,6 +24,10 @@ public class TempleService {
 	}
 
 	
+<<<<<<< HEAD
+=======
+		
+>>>>>>> master
 	@Transactional
 	public Temple create(Temple temple) {
 		Temple newTemple = new Temple();
@@ -31,10 +35,10 @@ public class TempleService {
 		newTemple.setPassword(passwordEncoder.encode(temple.getPassword()));
 		newTemple.setTempleName(temple.getTempleName());
 		newTemple.setDenomination(temple.getDenomination());
-		newTemple.setName(temple.getName());
+		newTemple.setMonkName(temple.getMonkName());
 		newTemple.setPosition(temple.getPosition());
 		newTemple.setPostalcode(temple.getPostalcode());
-		newTemple.setAdress(temple.getAdress());
+		newTemple.setAddress(temple.getAddress());
 		newTemple.setEmail(temple.getEmail());
 		
 		templeDao.insert(newTemple);

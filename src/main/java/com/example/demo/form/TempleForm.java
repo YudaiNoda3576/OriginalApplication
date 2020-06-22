@@ -24,7 +24,7 @@ public class TempleForm {
 	private String denomination;
 	
 	@NotBlank(groups = ValidGroup1.class)
-	private String name;
+	private String monkName;
 	
 	@NotBlank(groups = ValidGroup1.class)
 	private String position;
@@ -33,7 +33,7 @@ public class TempleForm {
 	private String postalcode;
 	
 	@NotBlank(groups = ValidGroup1.class)
-	private String adress;
+	private String address;
 	
 	@Email(groups = ValidGroup1.class)
 	private String email;
@@ -71,12 +71,7 @@ public class TempleForm {
 	public void setTempleName(String templeName) {
 		this.templeName = templeName;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getPosition() {
 		return position;
 	}
@@ -89,11 +84,18 @@ public class TempleForm {
 	public void setPostalcode(String postalcode) {
 		this.postalcode = postalcode;
 	}
-	public String getAdress() {
-		return adress;
+	
+	public String getMonkName() {
+		return monkName;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setMonkName(String monkName) {
+		this.monkName = monkName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getEmail() {
 		return email;

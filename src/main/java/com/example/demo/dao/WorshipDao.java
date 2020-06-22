@@ -21,8 +21,11 @@ public interface WorshipDao {
 		
 	@Select
 	List<SupporterWorship> findScheduleWithSupporter();
+<<<<<<< HEAD
 	
 	@Insert
 	int insert(Worship worship);
 	
+=======
+>>>>>>> master
 }
