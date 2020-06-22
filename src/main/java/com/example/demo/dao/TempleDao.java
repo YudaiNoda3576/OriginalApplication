@@ -15,11 +15,6 @@ public interface TempleDao {
 	@Insert
 	int insert(Temple temple);
 	
-<<<<<<< HEAD
-=======
-
-
->>>>>>> master
 	@Select
 	Temple findByLoginId(String templeId);
 

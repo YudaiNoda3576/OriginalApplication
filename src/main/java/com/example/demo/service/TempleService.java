@@ -23,11 +23,6 @@ public class TempleService {
 		this.templeDao = templeDao;
 	}
 
-	
-<<<<<<< HEAD
-=======
-		
->>>>>>> master
 	@Transactional
 	public Temple create(Temple temple) {
 		Temple newTemple = new Temple();
