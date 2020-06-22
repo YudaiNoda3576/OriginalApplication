@@ -20,6 +20,6 @@ public interface SupporterDao {
 	List<Supporter> findByTempleId(Integer templeId);
 
 	@Select
-	Supporter findById();
+	Supporter findSupporterId(Integer supporterId);
 
 }

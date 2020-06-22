@@ -30,7 +30,7 @@ public class WorshipService {
 	public Worship insert(Worship worship) {  
 		Worship newWorship = new Worship();  
 //		存在チェック　そのIDは存在するのか？というチェック
-//		if(supporterService.findById() != null) {	
+		
 		newWorship.setWorshipType(worship.getWorshipType());
 		newWorship.setSchedule(worship.getSchedule());
 		newWorship.setRemark(worship.getRemark());
