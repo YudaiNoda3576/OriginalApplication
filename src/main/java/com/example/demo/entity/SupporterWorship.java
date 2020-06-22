@@ -7,7 +7,7 @@ import org.seasar.doma.Entity;
 
 @Entity
 public class SupporterWorship {
-
+	
 	@Column(name = "supporter_name")
 	private String supporterName;
 	
@@ -20,6 +20,7 @@ public class SupporterWorship {
 	@Column(name = "remark")
 	private String remark;
 
+	
 	public String getSupporterName() {
 		return supporterName;
 	}
