@@ -16,7 +16,7 @@ import com.example.demo.entity.Worship;
 public interface WorshipDao {
 		
 	@Select
-	List<SupporterWorship> findScheduleWithSupporter(); 
+	List<SupporterWorship> findScheduleWithSupporter();
 	
 	@Insert
 	int insert(Worship worship);

@@ -82,6 +82,4 @@ public class WorshipController {
 		map.put(7, "七回忌");
 		return map;
 	}
-	
-	
 }
