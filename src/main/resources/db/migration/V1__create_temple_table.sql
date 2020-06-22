@@ -1,11 +1,15 @@
 CREATE TABLE `temple`
 (
     `id`        int          NOT NULL AUTO_INCREMENT,
-    `name`      varchar(255) NOT NULL,
+    `temple_id`  varchar(255) NOT NULL,
+    `password`  varchar(255) NOT NULL,
+    `temple_name` varchar(255) NOT NULL,
+    `denomination` varchar(255) NOT NULL,
+    `monk_name` varchar(255) NOT NULL,
+    `position` varchar(255) NOT NULL,
+    `postalcode` varchar(255) NOT NULL,
+    `address` varchar(255) NOT NULL,
     `email`     varchar(255) NOT NULL,
-    `is_active` tinyint(1)   NOT NULL DEFAULT '1',
-    `password`  varchar(255) NOT NULL DEFAULT 'aaa',
-    `login_id`  varchar(255) NOT NULL,
-    `role`      varchar(32)  NOT NULL,
+    `role`      varchar(32)  ,
     PRIMARY KEY (`id`)
-) 
+);

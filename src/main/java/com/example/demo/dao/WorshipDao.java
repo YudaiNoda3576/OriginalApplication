@@ -15,5 +15,5 @@ import com.example.demo.entity.SupporterWorship;
 public interface WorshipDao {
 		
 	@Select
-	List<SupporterWorship> findScheduleWithSupporter(); 
+	List<SupporterWorship> findScheduleWithSupporter();
 }

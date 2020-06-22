@@ -27,8 +27,8 @@ public class Temple {
 	@Column(name = "denomination")
 	private String denomination;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "monk_name")
+	private String monkName;
 
 	@Column(name = "position")
 	private String position;
@@ -36,8 +36,8 @@ public class Temple {
 	@Column(name = "postalcode")
 	private String postalcode;
 
-	@Column(name = "adress")
-	private String adress;
+	@Column(name = "address")
+	private String address;
 
 	@Column(name = "email")
 	private String email;
@@ -93,14 +93,7 @@ public class Temple {
 		this.denomination = denomination;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	public String getPosition() {
 		return position;
 	}
@@ -117,12 +110,22 @@ public class Temple {
 		this.postalcode = postalcode;
 	}
 
-	public String getAdress() {
-		return adress;
+	
+
+	public String getMonkName() {
+		return monkName;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setMonkName(String monkName) {
+		this.monkName = monkName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getEmail() {
