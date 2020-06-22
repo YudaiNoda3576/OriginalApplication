@@ -22,11 +22,7 @@ public class TempleService {
 		this.templeDao = templeDao;
 	}
 
-	
-	public List<Temple> findAll() {
-		return  this.templeDao.findAll();
-	}
-	
+
 	@Transactional
 	public Temple create(Temple temple) {
 		Temple newTemple = new Temple();
