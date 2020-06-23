@@ -5,14 +5,16 @@ import java.time.LocalDateTime;
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 
+import com.example.demo.domain.WorshipOpts;
+
 @Entity
 public class SupporterWorship {
 	
 	@Column(name = "supporter_name")
 	private String supporterName;
 	
-	@Column(name = "worship_type")
-	private String worshipType;
+	@Column(name = "worship_opts")
+	private WorshipOpts worshipOpts;
 	
 	@Column(name = "schedule")
 	private LocalDateTime schedule;
@@ -28,13 +30,14 @@ public class SupporterWorship {
 	public void setSupporterName(String supporterName) {
 		this.supporterName = supporterName;
 	}
+	
 
-	public String getWorshipType() {
-		return worshipType;
+	public WorshipOpts getWorshipOpts() {
+		return worshipOpts;
 	}
 
-	public void setWorshipType(String worshipType) {
-		this.worshipType = worshipType;
+	public void setWorshipOpts(WorshipOpts worshipOpts) {
+		this.worshipOpts = worshipOpts;
 	}
 
 	public LocalDateTime getSchedule() {

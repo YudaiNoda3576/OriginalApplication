@@ -18,10 +18,11 @@
 		
 			<input type="hidden" name="supporterId" th:value="*{supporterId}" />
 			
-			<label th:text="#{worshipType}">お参りの種類（選択してください）：</label> <select name="worshipType">
-				<option th:each="worshipType : ${worshipTypes}"
-					th:value="${worshipType.value}" th:text="${worshipType.value}"
-					th:selected="${worshipType.value} == *{worshipType}"></option>
+			<label th:text="#{worshipOpts}">お参りの種類（選択してください）：</label> 
+			<select name="worshipType">
+				<option th:each="worshipOpts : *{worshipOpts}"
+					th:value="${worshipOpts.value}" th:text="${worshipOpts.label}"
+					th:selected="${worshipOpts.value} == *{worshipType}"></option>
 			</select><br>
 			<span class="text-danger" th:if="${#fields.hasErrors('worshipType')}" th:errors="*{worshipType}"></span> 
 			

@@ -9,12 +9,13 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.example.demo.domain.WorshipOpts;
+
 public class WorshipForm {
 
 	private Integer worshipId;
 
-	@NotBlank(groups = ValidGroup1.class)
-	private String worshipType;
+	private Integer worshipType;
 
 	@NotNull(groups = ValidGroup1.class)
 	@Future(groups = ValidGroup2.class)
@@ -25,6 +26,17 @@ public class WorshipForm {
 	private String remark;
 
 	private Integer supporterId;
+
+//	@NotBlank(groups = ValidGroup1.class)
+	private WorshipOpts worshipOpts;
+
+	public WorshipOpts[] getWorshipOpts() {
+		return WorshipOpts.values();
+	}
+
+	public void setWorshipOpts(WorshipOpts worshipOpts) {
+		this.worshipOpts = worshipOpts;
+	}
 
 	public Integer getSupporterId() {
 		return supporterId;
@@ -42,11 +54,12 @@ public class WorshipForm {
 		this.worshipId = worshipId;
 	}
 
-	public String getWorshipType() {
+
+	public Integer getWorshipType() {
 		return worshipType;
 	}
 
-	public void setWorshipType(String worshipType) {
+	public void setWorshipType(Integer worshipType) {
 		this.worshipType = worshipType;
 	}
 

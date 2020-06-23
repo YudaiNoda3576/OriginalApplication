@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import java.util.LinkedHashMap;
+
 
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.example.demo.domain.WorshipOpts;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 import com.example.demo.form.GroupOrder;
@@ -36,6 +34,8 @@ public class WorshipController {
 	WorshipService worshipService;
 	@Autowired
 	TempleService templeService;
+	
+	
 
 	@GetMapping("/schedule")
 	public String getSchedule(Model model) {
@@ -51,7 +51,7 @@ public class WorshipController {
 			@PathVariable("supporterId")Integer supporterId) {
 		if(supporterId != null) {
 		model.addAttribute("contents", "worship/worshipRegister :: worshipRegister_contents");
-		model.addAttribute("worshipTypes", getWorshipType());
+		model.addAttribute("worshipTypes", worshipForm);
 		return "home/homeLayout";
 		} else {
 			throw new IdNotExistException("檀徒IDが存在しません");
@@ -69,24 +69,12 @@ public class WorshipController {
 		}
 		Worship worship = new Worship();
 		worship.setSupporterId(worshipForm.getSupporterId());
-		worship.setWorshipType(worshipForm.getWorshipType());
+		worship.setWorshipOpts(WorshipOpts.valueOf(worshipForm.getWorshipType()));
 		worship.setSchedule(worshipForm.getSchedule());
 		worship.setRemark(worshipForm.getRemark());
 		worshipService.insert(worship);
 		
 		redirectAttributes.addFlashAttribute("success","登録が完了しました");
 		return "redirect:/worship/{supporterId}";	
-	}
-//	お参りの種類をMapに格納
-	private Map<Integer, String> getWorshipType() {
-		var map = new LinkedHashMap<Integer, String>();
-		map.put(1, "葬式");
-		map.put(2, "寺参り");
-		map.put(3, "初七日");
-		map.put(4, "七日七日");
-		map.put(5, "一周忌");
-		map.put(6, "三回忌");
-		map.put(7, "七回忌");
-		return map;
 	}
 }

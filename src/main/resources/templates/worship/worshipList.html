@@ -18,11 +18,11 @@
 				<th class="info col-sm-2" th:text="#{schedule}">日時</th>
 				<th class="info col-sm-2" th:text="#{remark}">備考</th>
 			</tr>
-			<tr th:each="worship : ${worshipList}">
-				<td th:text="${worship.supporterName}"></td>
-				<td th:text="${worship.worshipType}"></td>
-				<td th:text="${worship.schedule}"></td>
-				<td th:text="${worship.remark}"></td>
+			<tr th:each="worship : ${worshipList}" th:object="${worship}">
+				<td th:text="*{supporterName}"></td>
+				<td th:text="*{worshipOpts.label}"></td>
+				<td th:text="*{schedule}"></td>
+				<td th:text="*{remark}"></td>
 			</tr>
 		</table>
 	</div>
