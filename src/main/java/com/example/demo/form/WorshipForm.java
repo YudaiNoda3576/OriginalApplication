@@ -27,7 +27,7 @@ public class WorshipForm {
 
 	private Integer supporterId;
 
-//	@NotBlank(groups = ValidGroup1.class)
+	
 	private WorshipOpts worshipOpts;
 
 	public WorshipOpts[] getWorshipOpts() {
