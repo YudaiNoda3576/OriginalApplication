@@ -1,7 +1,7 @@
 CREATE TABLE `worship`
 (
     `worship_id` int NOT NULL AUTO_INCREMENT,
-    `worship_type`  varchar(255) NOT NULL,
+    `worship_opts`  tinyint NOT NULL,
     `schedule`  datetime NOT NULL,
     `remark` text(500) NOT NULL,
     `supporter_id` int NOT NULL,
