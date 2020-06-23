@@ -17,8 +17,5 @@ public interface SupporterDao {
 	int insert(Supporter supporter);
 
 	@Select
-	List<Supporter> findByTempleId(Integer templeId);
-
-	Supporter findSupporterId(Integer supporterId);
-	
+	List<Supporter> findByTempleId(Integer templeId);	
 }

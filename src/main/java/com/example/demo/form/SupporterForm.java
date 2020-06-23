@@ -15,7 +15,7 @@ public class SupporterForm {
 	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", groups = ValidGroup2.class)
 	private String postalcode;
 	@NotBlank(groups = ValidGroup1.class)
-	private String adress;
+	private String address;
 	@NotBlank(groups = ValidGroup1.class)
 	private String phoneNumber;
 	@Email
@@ -53,13 +53,6 @@ public class SupporterForm {
 		this.postalcode = postalcode;
 	}
 
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -75,6 +68,14 @@ public class SupporterForm {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

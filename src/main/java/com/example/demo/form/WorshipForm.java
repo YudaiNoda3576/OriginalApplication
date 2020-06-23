@@ -24,7 +24,6 @@ public class WorshipForm {
 	@Length(min = 0, max = 500, groups = ValidGroup1.class)
 	private String remark;
 
-	@NotNull(groups = ValidGroup1.class)
 	private Integer supporterId;
 
 	public Integer getSupporterId() {

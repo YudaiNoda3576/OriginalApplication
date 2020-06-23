@@ -27,8 +27,8 @@ public class Supporter {
 	@Column(name = "postalcode")
 	private String postalcode;
 	
-	@Column(name = "adress")
-	private String adress;
+	@Column(name = "address")
+	private String address;
 	
 	@Column(name = "phoneNumber")
 	private String phoneNumber;
@@ -80,12 +80,13 @@ public class Supporter {
 		this.postalcode = postalcode;
 	}
 
-	public String getAdress() {
-		return adress;
+
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getPhoneNumber() {

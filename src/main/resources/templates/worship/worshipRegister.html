@@ -14,11 +14,10 @@
 		<h1>お参り予定登録</h1>
 		<h3 style="color: blue;" th:text="${success}">登録が完了しました</h3>
 		<h3 style="color: red; "th:text="${failed}">登録が失敗しました</h3>
-		<form method="POST" th:action="@{/worship}" th:object="${worshipForm}">
+		<form method="POST" th:action="@{'/worship/' + ${worshipForm.supporterId}}" th:object="${worshipForm}">
 		
-			<label th:text="#{supporterId}">檀徒ID：</label> <input type="text" name="supporterId" th:value="*{supporterId}" /><br>
-			<span class="text-danger" th:if="${#fields.hasErrors('supporterId')}" th:errors="*{supporterId}"></span> 
-			<br>
+			<input type="hidden" name="supporterId" th:value="*{supporterId}" />
+			
 			<label th:text="#{worshipType}">お参りの種類（選択してください）：</label> <select name="worshipType">
 				<option th:each="worshipType : ${worshipTypes}"
 					th:value="${worshipType.value}" th:text="${worshipType.value}"

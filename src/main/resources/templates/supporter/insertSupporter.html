@@ -63,13 +63,13 @@
 					</tr>
 
 					<tr>
-						<th class="active" th:text="#{adress}">住所</th>
+						<th class="active" th:text="#{address}">住所</th>
 						<td>
 							<div class="form-group"
-								th:classappend="${#fields.hasErrors('adress')}?'has-error'">
-								<input type="text" class="form-control" th:field="*{adress}" />
-								<span class="text-danger" th:if="${#fields.hasErrors('adress')}"
-									th:errors="*{adress}">住所エラー</span>
+								th:classappend="${#fields.hasErrors('address')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{address}" />
+								<span class="text-danger" th:if="${#fields.hasErrors('address')}"
+									th:errors="*{address}">住所エラー</span>
 							</div>
 						</td>
 					</tr>

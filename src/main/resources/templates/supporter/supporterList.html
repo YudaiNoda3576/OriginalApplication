@@ -17,18 +17,24 @@
 				<th class="info col-sm-2" th:text="#{supporterName}">檀徒氏名</th>
 				<th class="info col-sm-2" th:text="#{ownerName}">施主名</th>
 				<th class="info col-sm-2" th:text="#{postalcode}">郵便番号</th>
-				<th class="info col-sm-2" th:text="#{adress}">住所</th>
+				<th class="info col-sm-2" th:text="#{address}">住所</th>
 				<th class="info col-sm-2" th:text="#{phoneNumber}">電話番号</th>
 				<th class="info col-sm-2" th:text="#{email}">メールアドレス</th>
+				 <th class="info col-sm-2"></th>    
 			</tr>
 			<tr th:each="supporter : ${supporterList}">
 				<td th:text="${supporter.supporterId}"></td>
 				<td th:text="${supporter.supporterName}"></td>
 				<td th:text="${supporter.ownerName}"></td>
 				<td th:text="${supporter.postalcode}"></td>
-				<td th:text="${supporter.adress}"></td>
+				<td th:text="${supporter.address}"></td>
 				<td th:text="${supporter.phoneNumber}"></td>
 				<td th:text="${supporter.email}"></td>
+				<td>
+                    <a class="btn btn-primary" th:href="@{'/worship/' + ${supporter.supporterId}}">
+                        予定登録
+                    </a>
+                </td>
 			</tr>
 		</table>
 	</div>

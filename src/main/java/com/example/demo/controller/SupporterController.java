@@ -69,7 +69,7 @@ public class SupporterController {
 		supporter.setSupporterName(supporterForm.getSupporterName());
 		supporter.setOwnerName(supporterForm.getOwnerName());
 		supporter.setPostalcode(supporterForm.getPostalcode());
-		supporter.setAdress(supporterForm.getAdress());
+		supporter.setAddress(supporterForm.getAddress());
 		supporter.setPhoneNumber(supporterForm.getPhoneNumber());
 		supporter.setEmail(supporterForm.getEmail());
 		supporter.setTempleId(temple.getId());

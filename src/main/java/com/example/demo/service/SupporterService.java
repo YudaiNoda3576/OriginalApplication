@@ -35,8 +35,5 @@ public class SupporterService {
 		
 	}
 	
-	public Supporter findSupporterId(Integer supporterId) {
-		return this.supporterDao.findSupporterId(supporterId);
-	}
-	
+
 }
