@@ -43,6 +43,7 @@ public class WorshipController {
 	@GetMapping("/worship/{supporterId}")
 	public String getWorship(@ModelAttribute WorshipForm worshipForm, Model model,
 			@PathVariable("supporterId") Integer supporterId) {
+//		ガード節
 		if (supporterId == null) {
 			throw new IdNotExistException("檀徒IDが存在しません");
 		}
