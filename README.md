@@ -28,6 +28,7 @@
 * お参りの予定を一覧表示することができる。
 
 # ERD
+![ERD](https://user-images.githubusercontent.com/63564761/85499265-3d2e3780-b61c-11ea-86a3-f7d840af8ec4.png)
 
 
 # PR Point 
