@@ -1,4 +1,4 @@
-# TempleTaskManger(寺務管理アプリケーション)
+# TempleTaskManager(寺務管理アプリケーション)
 
 ## Overview
 寺務（寺院におけるデスクワーク全般）を管理するアプリケーション
