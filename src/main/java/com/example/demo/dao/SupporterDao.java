@@ -18,5 +18,4 @@ public interface SupporterDao {
 
 	@Select
 	List<Supporter> findByTempleId(Integer templeId);
-
 }

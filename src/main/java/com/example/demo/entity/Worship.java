@@ -9,17 +9,19 @@ import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 import org.seasar.doma.Table;
 
+import com.example.demo.domain.WorshipOpts;
+
 @Entity
 @Table(name = "worship")
 public class Worship {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "worship_id")
 	private Integer worshipId;
 	
-	@Column(name = "worship_type")
-	private String worshipType;
+//	Enum 値を変換　Domaの機能　樋口さんの参考
+	@Column(name = "worship_opts")
+	private WorshipOpts worshipOpts;
 	
 	@Column(name = "schedule")
 	private LocalDateTime schedule;
@@ -27,9 +29,9 @@ public class Worship {
 	@Column(name = "remark")
 	private String remark;
 
-
 	@Column(name = "supporter_id")
 	private Integer supporterId;
+
 
 	public String getRemark() {
 		return remark;
@@ -46,12 +48,12 @@ public class Worship {
 		this.worshipId = worshipId;
 	}
 
-	public String getWorshipType() {
-		return worshipType;
+	public WorshipOpts getWorshipOpts() {
+		return worshipOpts;
 	}
 
-	public void setWorshipType(String worshipType) {
-		this.worshipType = worshipType;
+	public void setWorshipOpts(WorshipOpts worshipOpts) {
+		this.worshipOpts = worshipOpts;
 	}
 
 	public LocalDateTime getSchedule() {

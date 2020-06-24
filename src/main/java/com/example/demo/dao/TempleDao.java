@@ -1,6 +1,5 @@
 package com.example.demo.dao;
 
-import java.util.List;
 
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
@@ -16,8 +15,6 @@ public interface TempleDao {
 	@Insert
 	int insert(Temple temple);
 	
-
-
 	@Select
 	Temple findByLoginId(String templeId);
 

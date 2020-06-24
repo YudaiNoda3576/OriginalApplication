@@ -1,6 +1,6 @@
 CREATE TABLE `temple`
 (
-    `id`        int          NOT NULL AUTO_INCREMENT,
+    `id`        int    NOT NULL AUTO_INCREMENT,
     `temple_id`  varchar(255) NOT NULL,
     `password`  varchar(255) NOT NULL,
     `temple_name` varchar(255) NOT NULL,

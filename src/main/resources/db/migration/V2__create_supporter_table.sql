@@ -4,7 +4,7 @@ CREATE TABLE `supporter`
     `supporter_name`  varchar(255) NOT NULL,
     `owner_name`  varchar(255) NOT NULL,
     `postalcode` varchar(255) NOT NULL,
-    `adress` varchar(255) NOT NULL,
+    `address` varchar(255) NOT NULL,
     `phonenumber` varchar(255) NOT NULL,
     `email`     varchar(255) NOT NULL,
     `temple_id` int NOT NULL,
