@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,8 +23,6 @@ import com.example.demo.service.IdNotExistException;
 import com.example.demo.service.TempleService;
 import com.example.demo.service.WorshipService;
 
-
-
 @Controller
 @RequestMapping("/")
 public class WorshipController {
@@ -34,8 +30,6 @@ public class WorshipController {
 	WorshipService worshipService;
 	@Autowired
 	TempleService templeService;
-	
-	
 
 	@GetMapping("/schedule")
 	public String getSchedule(Model model) {
@@ -45,25 +39,23 @@ public class WorshipController {
 
 		return "home/homeLayout";
 	}
-	
+
 	@GetMapping("/worship/{supporterId}")
 	public String getWorship(@ModelAttribute WorshipForm worshipForm, Model model,
-			@PathVariable("supporterId")Integer supporterId) {
-		if(supporterId != null) {
+			@PathVariable("supporterId") Integer supporterId) {
+		if (supporterId == null) {
+			throw new IdNotExistException("檀徒IDが存在しません");
+		}
 		model.addAttribute("contents", "worship/worshipRegister :: worshipRegister_contents");
 		model.addAttribute("worshipTypes", worshipForm);
 		return "home/homeLayout";
-		} else {
-			throw new IdNotExistException("檀徒IDが存在しません");
-		}
 	}
-	
-	
+
 	@PostMapping("/worship/{supporterId}")
-	public String postSchedule(@ModelAttribute @Validated(GroupOrder.class) WorshipForm worshipForm, 
-			BindingResult bindingResult, Model model, 
-			RedirectAttributes redirectAttributes, @PathVariable("supporterId")Integer supporterId) {
-		if(bindingResult.hasErrors()) {
+	public String postSchedule(@ModelAttribute @Validated(GroupOrder.class) WorshipForm worshipForm,
+			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes,
+			@PathVariable("supporterId") Integer supporterId) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("failed", "登録に失敗しました");
 			return getWorship(worshipForm, model, supporterId);
 		}
@@ -73,8 +65,8 @@ public class WorshipController {
 		worship.setSchedule(worshipForm.getSchedule());
 		worship.setRemark(worshipForm.getRemark());
 		worshipService.insert(worship);
-		
-		redirectAttributes.addFlashAttribute("success","登録が完了しました");
-		return "redirect:/worship/{supporterId}";	
+
+		redirectAttributes.addFlashAttribute("success", "登録が完了しました");
+		return "redirect:/worship/{supporterId}";
 	}
 }
