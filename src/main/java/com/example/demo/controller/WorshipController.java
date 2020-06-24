@@ -43,7 +43,7 @@ public class WorshipController {
 	@GetMapping("/worship/{supporterId}")
 	public String getWorship(@ModelAttribute WorshipForm worshipForm, Model model,
 			@PathVariable("supporterId") Integer supporterId) {
-//		ガード節
+//		ガード節:処理の対象外とする条件を、関数やループの先頭に集めて return や continue/break で抜ける方法
 		if (supporterId == null) {
 			throw new IdNotExistException("檀徒IDが存在しません");
 		}
