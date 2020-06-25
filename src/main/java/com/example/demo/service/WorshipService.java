@@ -2,14 +2,11 @@ package com.example.demo.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.dao.SupporterDao;
 import com.example.demo.dao.WorshipDao;
-import com.example.demo.domain.WorshipOpts;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 
@@ -22,7 +19,6 @@ public class WorshipService {
 	@Autowired
 	SupporterService supporterService;
 	
-
 	
 	public List<SupporterWorship> findScheduleWithSupporter() {
 		return this.worshipDao.findScheduleWithSupporter();
@@ -34,4 +30,15 @@ public class WorshipService {
 		worshipDao.insert(worship);
 		return worship;
   }
+	
+	public List<SupporterWorship> findByWorshipId(Integer worshipId) {
+		return this.worshipDao.findByWorshipId(worshipId);
+	}
+	
+	@Transactional
+	public SupporterWorship judge(SupporterWorship supporterWorship, Boolean doComplete) {
+		supporterWorship.setProgress(!doComplete);
+		this.worshipDao.update(supporterWorship);
+		return supporterWorship; 
+	}
 }

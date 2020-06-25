@@ -9,6 +9,8 @@ import com.example.demo.domain.WorshipOpts;
 
 @Entity
 public class SupporterWorship {
+	@Column(name = "worship_id")
+	private Integer worshipId;
 	
 	@Column(name = "supporter_name")
 	private String supporterName;
@@ -21,8 +23,29 @@ public class SupporterWorship {
 	
 	@Column(name = "remark")
 	private String remark;
+	
+	@Column(name = "progress")
+	private Boolean progress;
 
 	
+	
+
+	public Integer getWorshipId() {
+		return worshipId;
+	}
+
+	public void setWorshipId(Integer worshipId) {
+		this.worshipId = worshipId;
+	}
+
+	public Boolean getProgress() {
+		return progress;
+	}
+
+	public void setProgress(Boolean progress) {
+		this.progress = progress;
+	}
+
 	public String getSupporterName() {
 		return supporterName;
 	}
