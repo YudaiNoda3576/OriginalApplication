@@ -26,11 +26,11 @@
 				<td th:text="*{worshipOpts.label}"></td>
 				<td th:text="*{schedule}"></td>
 				<td th:text="*{remark}"></td>
-				 <td>
+				<td>
 					<button class="btn btn-warning"
 						th:style="'display:' + (${worship.progress} ? 'none' : '')"
 						th:onclick="|complete(this, '*{worshipId}',true)|"
-						th:text="#{incomplete}">未完了</button>
+						th:text="#{incomplete}">未完了</button>		
 					<button class="btn btn-secondary"
 						th:style="'display:' + (${worship.progress} ? '' : 'none')"
 						th:onclick="|complete(this, '*{worshipId}',false)|"
@@ -43,10 +43,10 @@
 			      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
 			      const header = document.querySelector("meta[name='_csrf_header']").attributes['content'].value; 
 				　const bgColor = document.getElementById(worshipId);
-			      let url =  doComplete ? "/complete" : "/incomplete";
+			      let url =  doComplete ? "/incomplete" : "/complete";
 			      fetch(url, {
 			        method: 'POST',
-			       headers: {
+			        headers: {
 			          "Content-Type": 'application/x-www-form-urlencoded',
 			          [header]: token 
 			        },  
@@ -63,7 +63,6 @@
 			    	          }
 			      );
 			    }
-
   		</script>
 
 	</div>
