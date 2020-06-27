@@ -31,14 +31,5 @@ public class WorshipService {
 		return worship;
   }
 	
-	public List<SupporterWorship> findByWorshipId(Integer worshipId) {
-		return this.worshipDao.findByWorshipId(worshipId);
-	}
-	
-	@Transactional
-	public Worship judge(Worship worship, Boolean doComplete) {
-		worship.setProgress(!doComplete);
-		this.worshipDao.update(worship);
-		return worship; 
-	}
+
 }
