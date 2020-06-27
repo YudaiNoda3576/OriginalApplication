@@ -72,8 +72,26 @@ public class WorshipController {
 
 		redirectAttributes.addFlashAttribute("success", "登録が完了しました");
 		return "redirect:/worship/{supporterId}";
+		
+		
 	}
 	
-
+	@PostMapping("/complete")
+	@ResponseBody
+	public boolean complete(@RequestParam Integer worshipId) {
+		Worship worship = new Worship();
+		worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, true);
+		return true; 
+	}
+	
+	@PostMapping("/incomplete")
+	@ResponseBody
+	public boolean incomplete(@RequestParam Integer worshipId) {
+		Worship worship = new Worship();
+		worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, false);
+		return false; 
+	}
 	
 }

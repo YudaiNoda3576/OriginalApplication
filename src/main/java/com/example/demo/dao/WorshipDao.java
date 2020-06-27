@@ -27,6 +27,12 @@ public interface WorshipDao {
 	@Insert
 	int insert(Worship worship);
 	
+	@Select
+	List<SupporterWorship> findByWorshipId(Integer worshipId);
+	
+//	お参り予定の完了・未完了判定用のメソッド
+	@Update
+	int update(Worship worship);
 	
 
 }

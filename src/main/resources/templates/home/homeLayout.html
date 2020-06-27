@@ -4,7 +4,12 @@
 
 <head>
 <meta charset="UTF-8"></meta>
- 
+  <meta
+        name="_csrf"
+        th:content="${_csrf.token}"/>
+    <meta
+        name="_csrf_header"
+        th:content="${_csrf.headerName}"/>
 <!-- Bootstrapの設定 -->
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
 	rel="stylesheet"></link>
