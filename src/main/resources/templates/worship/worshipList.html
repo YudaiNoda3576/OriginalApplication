@@ -45,33 +45,7 @@
 			</tr>
 		</table>
 
-		<script type="text/javascript">
-			   	  var complete = function(element, worshipId, doComplete) {
-			      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
-			      const header = document.querySelector("meta[name='_csrf_header']").attributes['content'].value; 
-				　const bgColor = document.getElementById(worshipId);
-			      let url =  doComplete ? "/complete" : "/incomplete";
-			      fetch(url, {
-			        method: 'POST',
-			       headers: {
-			          "Content-Type": 'application/x-www-form-urlencoded',
-			          [header]: token 
-			        },  
-			        body: `worshipId=${worshipId}`
-			      }).then(
-			    		  response => {
-			    	            if (doComplete) {
-			    	            	element.style.display = 'none';
-			    	                element.nextElementSibling.style.display = '';
-			    	            } else {
-			    	            	element.style.display = 'none';
-			    	            	element.previousElementSibling.style.display = '';
-			    	            }
-			    	          }
-			      );
-			    }
-
-  		</script>
+		
 	</div>
 </body>
 </html>
