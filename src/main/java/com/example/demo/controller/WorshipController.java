@@ -77,18 +77,18 @@ public class WorshipController {
 	@PostMapping("/complete")
 	@ResponseBody
 	public boolean complete(@RequestParam Integer worshipId) {
-		SupporterWorship supporterWorship = new SupporterWorship();
+		Worship worship = new Worship();
 		worshipService.findByWorshipId(worshipId);
-		worshipService.judge(supporterWorship, true);
+		worshipService.judge(worship, true);
 		return true; 
 	}
 	
 	@PostMapping("/incomplete")
 	@ResponseBody
 	public boolean incomplete(@RequestParam Integer worshipId) {
-		SupporterWorship supporterWorship = new SupporterWorship();
+		Worship worship = new Worship();
 		worshipService.findByWorshipId(worshipId);
-		worshipService.judge(supporterWorship, false);
+		worshipService.judge(worship, false);
 		return false; 
 	}
 	

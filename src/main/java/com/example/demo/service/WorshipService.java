@@ -36,9 +36,9 @@ public class WorshipService {
 	}
 	
 	@Transactional
-	public SupporterWorship judge(SupporterWorship supporterWorship, Boolean doComplete) {
-		supporterWorship.setProgress(!doComplete);
-		this.worshipDao.update(supporterWorship);
-		return supporterWorship; 
+	public Worship judge(Worship worship, Boolean doComplete) {
+		worship.setProgress(!doComplete);
+		this.worshipDao.update(worship);
+		return worship; 
 	}
 }

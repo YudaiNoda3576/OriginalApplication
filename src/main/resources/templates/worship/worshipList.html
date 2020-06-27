@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 <head>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <meta charset="UTF-8"></meta>
+  <meta
+        name="_csrf"
+        th:content="${_csrf.token}"/>
+    <meta
+        name="_csrf_header"
+        th:content="${_csrf.headerName}"/>
 <title>WorshipList</title>
 </head>
 <body>
@@ -26,51 +33,45 @@
 				<td th:text="*{schedule}"></td>
 				<td th:text="*{remark}"></td>
 				<td>
-					<button 
-						class="btn btn-warning"
+					<button class="btn btn-warning"
 						th:style="'display:' + (${worship.progress} ? 'none' : '')"
 						th:onclick="|complete(this, '*{worshipId}',true)|"
 						th:text="#{incomplete}">未完了</button>
-					<button 
-						class="btn btn-secondary"
+					<button class="btn btn-secondary"
 						th:style="'display:' + (${worship.progress} ? '' : 'none')"
 						th:onclick="|complete(this, '*{worshipId}',false)|"
-						th:text="#{complete}">完了</button>		
+						th:text="#{complete}">完了</button>
 				</td>
 			</tr>
 		</table>
+
+		<script type="text/javascript">
+			   	  var complete = function(element, worshipId, doComplete) {
+			      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
+			      const header = document.querySelector("meta[name='_csrf_header']").attributes['content'].value; 
+				　const bgColor = document.getElementById(worshipId);
+			      let url =  doComplete ? "/complete" : "/incomplete";
+			      fetch(url, {
+			        method: 'POST',
+			       headers: {
+			          "Content-Type": 'application/x-www-form-urlencoded',
+			          [header]: token 
+			        },  
+			        body: `worshipId=${worshipId}`
+			      }).then(
+			    		  response => {
+			    	            if (doComplete) {
+			    	            	element.style.display = 'none';
+			    	                element.nextElementSibling.style.display = '';
+			    	            } else {
+			    	            	element.style.display = 'none';
+			    	            	element.previousElementSibling.style.display = '';
+			    	            }
+			    	          }
+			      );
+			    }
+
+  		</script>
 	</div>
-	
-	<script type="text/javascript">
-
-    function complete(element, worshipId, doComplete) {
-
-      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
-      const header = document.querySelector(
-          "meta[name='_csrf_header']").attributes['content'].value;
-
-      let url =  doSubscript ? "/complete" : "/incomplete";
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          "Content-Type": 'application/x-www-form-urlencoded',
-          [header]: token
-        },
-        body: `worshipId=${worshipId}`
-      }).then(
-    		  response => {
-    	            if (doComplete) {
-    	            	element.style.display = 'none';
-    	                element.nextElementSibling.style.display = '';
-    	            } else {
-    	            	element.style.display = 'none';
-    	            	element.previousElementSibling.style.display = '';
-    	            }
-    	          }
-      );
-    }
-
-  </script>
-
 </body>
 </html>

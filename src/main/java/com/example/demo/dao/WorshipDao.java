@@ -32,6 +32,6 @@ public interface WorshipDao {
 	
 //	お参り予定の完了・未完了判定用のメソッド
 	@Update
-	int update(SupporterWorship supporterWorship);
+	int update(Worship worship);
 
 }
