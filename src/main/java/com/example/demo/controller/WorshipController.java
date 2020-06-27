@@ -80,7 +80,7 @@ public class WorshipController {
 	@ResponseBody
 	public boolean complete(@RequestParam Integer worshipId) {
 		Worship worship = new Worship();
-		worshipService.findByWorshipId(worshipId);
+		worship = worshipService.findByWorshipId(worshipId);
 		worshipService.judge(worship, true);
 		return true; 
 	}
@@ -89,7 +89,7 @@ public class WorshipController {
 	@ResponseBody
 	public boolean incomplete(@RequestParam Integer worshipId) {
 		Worship worship = new Worship();
-		worshipService.findByWorshipId(worshipId);
+		worship = worshipService.findByWorshipId(worshipId);
 		worshipService.judge(worship, false);
 		return false; 
 	}

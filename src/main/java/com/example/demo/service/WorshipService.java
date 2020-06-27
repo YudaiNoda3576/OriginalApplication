@@ -31,7 +31,7 @@ public class WorshipService {
 		return worship;
   }
 	
-	public List<SupporterWorship> findByWorshipId(Integer worshipId) {
+	public Worship findByWorshipId(Integer worshipId) {
 		return this.worshipDao.findByWorshipId(worshipId);
 	}
 	
@@ -41,5 +41,4 @@ public class WorshipService {
 		this.worshipDao.update(worship);
 		return worship; 
 	}
-    
 }
