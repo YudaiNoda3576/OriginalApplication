@@ -18,7 +18,6 @@ public class Worship {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "worship_id")
 	private Integer worshipId;
-	
 //	Enum 値を変換　Domaの機能　樋口さんの参考
 	@Column(name = "worship_opts")
 	private WorshipOpts worshipOpts;
@@ -31,7 +30,18 @@ public class Worship {
 
 	@Column(name = "supporter_id")
 	private Integer supporterId;
+	
+	@Column(name = "progress")
+	private Boolean progress;
 
+
+	public Boolean getProgress() {
+		return progress;
+	}
+
+	public void setProgress(Boolean progress) {
+		this.progress = progress;
+	}
 
 	public String getRemark() {
 		return remark;

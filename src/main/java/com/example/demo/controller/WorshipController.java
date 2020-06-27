@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.domain.WorshipOpts;
@@ -22,6 +24,7 @@ import com.example.demo.form.WorshipForm;
 import com.example.demo.service.IdNotExistException;
 import com.example.demo.service.TempleService;
 import com.example.demo.service.WorshipService;
+
 
 @Controller
 @RequestMapping("/")
@@ -70,4 +73,23 @@ public class WorshipController {
 		redirectAttributes.addFlashAttribute("success", "登録が完了しました");
 		return "redirect:/worship/{supporterId}";
 	}
+	
+	@PostMapping("/complete")
+	@ResponseBody
+	public boolean complete(@RequestParam Integer worshipId) {
+		Worship worship = new Worship();
+		worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, true);
+		return true; 
+	}
+	
+	@PostMapping("/incomplete")
+	@ResponseBody
+	public boolean incomplete(@RequestParam Integer worshipId) {
+		Worship worship = new Worship();
+		worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, false);
+		return false; 
+	}
+	
 }

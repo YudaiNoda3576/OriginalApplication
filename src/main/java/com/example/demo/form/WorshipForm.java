@@ -29,6 +29,8 @@ public class WorshipForm {
 
 	
 	private WorshipOpts worshipOpts;
+	
+	
 
 	public WorshipOpts[] getWorshipOpts() {
 		return WorshipOpts.values();
