@@ -40,7 +40,6 @@ public class WorshipController {
 		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
 		model.addAttribute("contents", "worship/worshipList :: worshipList_contents");
 		model.addAttribute("worshipList", worshipList);
-
 		return "home/homeLayout";
 	}
 

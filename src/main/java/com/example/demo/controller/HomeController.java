@@ -32,9 +32,4 @@ public class HomeController {
 		return "redirect:/login";
 	}
 	
-	@GetMapping("/admin")
-	public String getAdmin(Model model) {
-		model.addAttribute("contents", "register/admin :: admin_contents");
-		return "home/homeLayout";
-	}
 }

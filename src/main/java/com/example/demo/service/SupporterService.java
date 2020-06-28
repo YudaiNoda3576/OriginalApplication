@@ -29,10 +29,8 @@ public class SupporterService {
 		return supporter;
 	}
 	
-	public List<Supporter> findByTempleId(Integer templeId) {
-		
-		return this.supporterDao.findByTempleId(templeId);
-		
+	public List<Supporter> findByTempleId(Integer templeId) {	
+		return this.supporterDao.findByTempleId(templeId);		
 	}
 	
 

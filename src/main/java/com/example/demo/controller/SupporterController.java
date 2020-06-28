@@ -40,7 +40,7 @@ public class SupporterController {
 
 	
 	@GetMapping("/supporterList")
-	public String List(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+	public String List(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 		Temple temple = templeService.findByLoginId(userDetails.getUsername());
 		List<Supporter> supporterList = supporterService.findByTempleId(temple.getId());
 		model.addAttribute("contents", "supporter/supporterList :: supporterList_contents");
