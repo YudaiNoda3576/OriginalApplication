@@ -34,6 +34,7 @@ public class WorshipController {
 	@Autowired
 	TempleService templeService;
 
+
 	@GetMapping("/schedule")
 	public String getSchedule(Model model) {
 		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
@@ -72,8 +73,23 @@ public class WorshipController {
 
 		redirectAttributes.addFlashAttribute("success", "登録が完了しました");
 		return "redirect:/worship/{supporterId}";
+		
 	}
 	
-
+	@PostMapping("/complete")
+	@ResponseBody
+	public boolean complete(@RequestParam Integer worshipId) {
+		Worship worship = worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, true);
+		return true; 
+	}
+	
+	@PostMapping("/incomplete")
+	@ResponseBody
+	public boolean incomplete(@RequestParam Integer worshipId) {
+		Worship worship = worshipService.findByWorshipId(worshipId);
+		worshipService.judge(worship, false);
+		return false; 
+	}
 	
 }

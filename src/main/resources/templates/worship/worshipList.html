@@ -4,7 +4,6 @@
 <head>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <meta charset="UTF-8"></meta>
- 
 <title>WorshipList</title>
 </head>
 <body>
@@ -20,16 +19,51 @@
 				<th class="info col-sm-2" th:text="#{schedule}">日時</th>
 				<th class="info col-sm-2" th:text="#{remark}">備考</th>
 				<th class="info col-sm-2" th:text="#{done}">完了チェック</th>
+				
 			</tr>
 			<tr th:each="worship : ${worshipList}" th:object="${worship}">
 				<td th:text="*{supporterName}"></td>
 				<td th:text="*{worshipOpts.label}"></td>
 				<td th:text="*{schedule}"></td>
 				<td th:text="*{remark}"></td>
-				
+				<td>
+					<button class="btn btn-warning"
+						th:style="'display:' + (${worship.progress} ? 'none' : '')"
+						th:onclick="|complete(this, '*{worshipId}',true)|"
+						th:text="#{incomplete}">未完了</button>		
+					<button class="btn btn-secondary"
+						th:style="'display:' + (${worship.progress} ? '' : 'none')"
+						th:onclick="|complete(this, '*{worshipId}',false)|"
+						th:text="#{complete}">完了</button>
+				</td>
 			</tr>
 		</table>
-
+  		<script type="text/javascript">
+			   	  var complete = function(element, worshipId, doComplete) {
+			      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
+			      const header = document.querySelector("meta[name='_csrf_header']").attributes['content'].value; 
+				　const bgColor = document.getElementById(worshipId);
+			      let url =  doComplete ? "/incomplete" : "/complete";
+			      fetch(url, {
+			        method: 'POST',
+			        headers: {
+			          "Content-Type": 'application/x-www-form-urlencoded',
+			          [header]: token 
+			        },  
+			        body: `worshipId=${worshipId}`
+			      }).then(
+			    		  response => {
+			    	            if (doComplete) {
+			    	            	element.style.display = 'none';
+			    	                element.nextElementSibling.style.display = '';
+			    	            } else {
+			    	            	element.style.display = 'none';
+			    	            	element.previousElementSibling.style.display = '';
+			    	            }
+			    	          }
+			      );
+			    }
+  		</script>
 
 	</div>
 </body>
