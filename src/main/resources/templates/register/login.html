@@ -8,27 +8,43 @@
 	rel="stylesheet"></link>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
-
+<link th:href="@{/css/login.css}" rel="stylesheet"></link>
 <title>Login</title>
 </head>
 <body class="text-center">
-	<h1>ログイン画面</h1>
-	<form method="post" th:action="@{/login}">
-		<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null" 
-		th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="text-danger">ログインエラーメッセージ</p>
-		<!-- <h3 style="color: blue;" th:text="${success}"></h3> -->
-		
-		<label th:text="#{templeId}">寺院ID</label> <input type="text" name="templeId"/><br /> <br />
-		
-		<label th:text="#{password}">パスワード</label> <input type="password" name="password"/><br /> <br />
-		
-		<!--  CSRF対策用トークン -->
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-		
-		<button class="btn btn-primary" type="submit">ログイン</button>
-	</form>
-	<br />
-	
-	<a th:href="@{'/signup'}">新規登録はこちら</a>
+	<nav class="navbar navbar-inverse navbar-fixed-top"
+		style="background-color: #007bbb;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand">寺務管理アプリケーション</div>
+			</div>
+		</div>
+	</nav>
+	<div class="wrapper">
+		<h1>ログイン画面</h1>
+		<form method="post" th:action="@{/login}">
+			<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+				th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+				class="text-danger">ログインエラーメッセージ</p>
+			<!-- <h3 style="color: blue;" th:text="${success}"></h3> -->
+
+			<label th:text="#{templeId}">ID</label><br /> <input type="text"
+				name="templeId" /><br /> <br /> <label th:text="#{password}">パスワード</label><br />
+			<input type="password" name="password" /><br /> <br />
+
+			<!--  CSRF対策用トークン -->
+			<input type="hidden" th:name="${_csrf.parameterName}"
+				th:value="${_csrf.token}" />
+
+			<button class="btn btn-primary" type="submit">ログイン</button>
+		</form>
+		<br /> <a th:href="@{'/signup'}">新規登録はこちら</a> <br /> <br />
+		<footer class="page-footer font-small">
+			<div class="footer-copyright text-center py-3">
+				© 2020 Copyright: <a href="https://rinsyouyakushi.org/">
+					rinsyouyakushi.com</a>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>

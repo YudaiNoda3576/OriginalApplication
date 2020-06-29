@@ -4,21 +4,21 @@
 <meta charset="UTF-8"></meta>
 
 <!-- Bootstrapの設定 -->
-<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
-	rel="stylesheet"></link>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 
 <title>Insert</title>
 </head>
+
 <body>
 	<div th:fragment="supporter_contents">
-		<div class="col-sm-5">
+		<div class="col-sm-9">
 			<div class="page-header">
-				<h1>檀徒登録画面</h1>
+				<h4>檀徒登録画面</h4>
 			</div>
-			<h3 style="color: blue;" th:text="${success}"></h3>
-			<h3 style="color: red;" th:text="${failed}"></h3>
+			<h6 style="color: blue;" th:text="${success}"></h6>
+			<h6 style="color: red;" th:text="${failed}"></h6>
 			<!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
 			<form method="post" th:action="@{/supporterInsert}"
 				th:object="${supporterForm}">
@@ -29,7 +29,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('supporterName')}?'has-error'">
 								<input type="text" class="form-control"
-									th:field="*{supporterName}" /> <span class="text-danger"
+									th:field="*{supporterName}" placeholder="氏名を入力"/> <span class="text-danger"
 									th:if="${#fields.hasErrors('supporterName')}"
 									th:errors="*{supporterName}">檀信徒氏名エラー</span>
 							</div>
@@ -41,7 +41,7 @@
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('ownerName')}?'has-error'">
-								<input type="text" class="form-control" th:field="*{ownerName}" />
+								<input type="text" class="form-control" th:field="*{ownerName}"  placeholder="施主名を入力"/>
 								<span class="text-danger"
 									th:if="${#fields.hasErrors('ownerName')}"
 									th:errors="*{ownerName}">寺院名エラー</span>
@@ -54,7 +54,8 @@
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">
-								<input type="text" class="form-control" th:field="*{postalcode}" />
+								<input type="text" class="form-control" th:field="*{postalcode}" 
+									 placeholder="7桁の半角数字でご入力下さい。"/>
 								<span class="text-danger"
 									th:if="${#fields.hasErrors('postalcode')}"
 									th:errors="*{postalcode}">郵便番号エラー</span>
@@ -67,7 +68,7 @@
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('address')}?'has-error'">
-								<input type="text" class="form-control" th:field="*{address}" />
+								<input type="text" class="form-control" th:field="*{address}" placeholder="住所を入力"/>
 								<span class="text-danger" th:if="${#fields.hasErrors('address')}"
 									th:errors="*{address}">住所エラー</span>
 							</div>
@@ -80,7 +81,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('phoneNumber')}?'has-error'">
 								<input type="text" class="form-control"
-									th:field="*{phoneNumber}" /> <span class="text-danger"
+									th:field="*{phoneNumber}" placeholder="ハイフンを含まない半角数字でご入力下さい"/> <span class="text-danger"
 									th:if="${#fields.hasErrors('phoneNumber')}"
 									th:errors="*{phoneNumber}">電話番号エラー</span>
 							</div>
@@ -92,7 +93,7 @@
 						<td>
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('email')}?'has-error'">
-								<input type="email" class="form-control" th:field="*{email}" />
+								<input type="email" class="form-control" th:field="*{email}" placeholder="メールアドレスを入力"/>
 								<span class="text-danger" th:if="${#fields.hasErrors('email')}"
 									th:errors="*{email}">メールアドレスエラー</span>
 							</div>
