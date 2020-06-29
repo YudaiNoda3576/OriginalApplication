@@ -43,7 +43,7 @@ https://blooming-caverns-34024.herokuapp.com/login
 * 複数テーブルの紐付け
 * 画面遷移を単一の画面で行っている風な見た目にしたこと
 * Enumを利用したデータのやりとり
-*Ajax通信による完了・未完了の切り替え
+* Ajax通信による完了・未完了の切り替え
 
 # Screen Transition
 ![ScreenTransition](https://user-images.githubusercontent.com/63564761/85501643-bfb8f600-b620-11ea-8010-0191a7199a32.png)
