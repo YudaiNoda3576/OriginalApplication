@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link th:href="@{/css/home.css}" rel="stylesheet"></link>
 <head>
-    <meta charset="UTF-8"></meta>
+<meta charset="UTF-8"></meta>
 </head>
 <body>
-    <!-- ポイント：th:fragment -->
-    <div th:fragment="home_contents">
-        <div class="page-header">
-            <h1>ホーム</h1>
-        </div>
-            <p th:text="${temple}"></p>
-    </div>
+	<!-- ポイント：th:fragment -->
+	<div th:fragment="home_contents">
+
+		<div class="page-header">
+			<h1>ホーム</h1>
+		</div>
+		<h2 th:text="'ようこそ' + ${temple} + 'さん'"></h2>
+
+	</div>
 </body>
 </html>
