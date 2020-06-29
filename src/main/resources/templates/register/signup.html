@@ -1,119 +1,167 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"></meta>
+<meta charset="UTF-8"></meta>
 
-    <!-- Bootstrapの設定 -->
-    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
-    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
-
-    <title>SignUp</title>
+<!-- Bootstrapの設定 -->
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<link th:href="@{/css/signup.css}" rel="stylesheet"></link>
+<title>SignUp</title>
 </head>
-<body>
-    <div class="col-sm-5">
-        <div class="page-header">
-            <h1>寺院登録画面</h1>
-        </div>
-        <h3 style="color: blue;" th:text="${success}"></h3>
-        <h3 style="color: red;" th:text="${failed}"></h3>
-        <!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
-        <form method="post" th:action="@{/signup}" th:object="${templeForm}"> 
-            <table class="table table-bordered table-hover">
-                
-                <tr>
-                    <th class="active col-sm-3" th:text="#{templeId}">寺院ID</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('templeId')}?'has-error'">
-                            <input type="text" class="form-control" th:field="*{templeId}"/> 
-                            <span class="text-danger" th:if="${#fields.hasErrors('templeId')}" th:errors="*{templeId}">寺院IDエラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <th class="active" th:text="#{password}">パスワード(8ケタ以上、32桁未満で入力してください)</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('password')}?'has-error'">
-                            <input type="text" class="form-control" th:field="*{password}"/>    
-                            <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">パスワードエラー</span>                    
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <th class="active" th:text="#{templeName}">寺院名</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('templeName')}?'has-error'">                        
-                            <input type="text" class="form-control" th:field="*{templeName}" />                   
-                            <span class="text-danger" th:if="${#fields.hasErrors('templeName')}" th:errors="*{templeName}">寺院名エラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <th class="active" th:text="#{denomination}">宗派</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('denomination')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{denomination}"/>
-                             <span class="text-danger" th:if="${#fields.hasErrors('denomination')}" th:errors="*{denomination}">宗派名エラー</span>
-                        </div>
-                    </td>
-                </tr>
-               
-                <tr>
-                    <th class="active" th:text="#{monkName}">氏名</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('monkName')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{monkName}"/> 
-                         <span class="text-danger" th:if="${#fields.hasErrors('monkName')}" th:errors="*{monkName}">氏名エラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <th class="active" th:text="#{position}">役職（住職、寺庭婦人などのお立場）</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('position')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{position}"/> 
-                            <span class="text-danger" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">役職エラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <th class="active" th:text="#{postalcode}">郵便番号</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">                       
-                            <input type="text" class="form-control" pattern="\d{3}-\d{4}" th:field="*{postalcode}"/> 
-                             <span class="text-danger" th:if="${#fields.hasErrors('postalcode')}" th:errors="*{postalcode}">郵便番号エラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <th class="active" th:text="#{address}">住所（番地まで正確にご記入ください）</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('address')}?'has-error'">                       
-                            <input type="text" class="form-control" th:field="*{address}"/>
-                        <span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">住所エラー</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <th class="active" th:text="#{email}">メールアドレス</th>
-                    <td>
-                        <div class="form-group" th:classappend="${#fields.hasErrors('email')}?'has-error'">                       
-                            <input type="email" class="form-control" th:field="*{email}"/> 
-                            <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">メールアドレスエラー</span>
-                        </div>
-                    </td>
-                </tr>
-            </table>       
-            <button class="btn btn-primary" type="submit">登録</button>
-            <a href="/login">戻る</a>
-        </form>
-    </div>
+<body class="text-center">
+	<nav class="navbar navbar-inverse navbar-fixed-top p-1"
+		style="background-color: #007bbb;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand">寺務管理アプリケーション</div>
+			</div>
+		</div>
+	</nav>
+	<div class="wrapper">
+		<div class="col-sm-5">
+			<div class="page-header">
+				<h1>寺院登録画面</h1>
+			</div>
+			<h3 style="color: blue;" th:text="${success}"></h3>
+			<h3 style="color: red;" th:text="${failed}"></h3>
+			<!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
+			<form method="post" th:action="@{/signup}" th:object="${templeForm}">
+
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th class="active col-sm-3" th:text="#{templeId}">ID</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('templeId')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{templeId}"
+									placeholder="お好きな値をご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('templeId')}"
+									th:errors="*{templeId}">IDエラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{password}">パスワード(8桁以上、32桁未満で入力してください)</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('password')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{password}"
+									placeholder="半角英数字でご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}">パスワードエラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{templeName}">寺院名</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('templeName')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{templeName}"
+									placeholder="ご自身の所属寺院をご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('templeName')}"
+									th:errors="*{templeName}">寺院名エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{denomination}">宗派</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('denomination')}?'has-error'">
+								<input type="text" class="form-control"
+									th:field="*{denomination}" placeholder="ご自身の所属宗派をご入力ください。南無。" />
+								<span class="text-danger"
+									th:if="${#fields.hasErrors('denomination')}"
+									th:errors="*{denomination}">宗派名エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{monkName}">氏名</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('monkName')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{monkName}"
+									placeholder="氏名をご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('monkName')}"
+									th:errors="*{monkName}">氏名エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{position}">役職（住職、寺庭婦人などのお立場）</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('position')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{position}"
+									placeholder="役職をご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('position')}"
+									th:errors="*{position}">役職エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{postalcode}">郵便番号</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{postalcode}"
+									placeholder="７桁の半角数字でご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('postalcode')}"
+									th:errors="*{postalcode}">郵便番号エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{address}">住所（番地まで正確にご記入ください）</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('address')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{address}"
+									placeholder="住所をご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('address')}" th:errors="*{address}">住所エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{email}">メールアドレス</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('email')}?'has-error'">
+								<input type="email" class="form-control" th:field="*{email}"
+									placeholder="メールアドレスをご入力ください。南無。" /> <span class="text-danger"
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}">メールアドレスエラー</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="text-right">
+					<button class="btn btn-primary" type="submit" style="width: 100px;">登録</button>
+				</div>
+			</form>
+			<a href="/login">戻る</a>
+		</div>
+
+		<!-- Footer -->
+		<footer class="page-footer font-small">
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">
+				© 2020 Copyright: <a href="https://rinsyouyakushi.org/">
+					rinsyouyakushi.com</a>
+			</div>
+		</footer>
+	</div>
 </body>
 </html>
