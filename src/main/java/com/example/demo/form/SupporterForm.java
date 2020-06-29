@@ -17,7 +17,7 @@ public class SupporterForm {
 	@NotBlank(groups = ValidGroup1.class)
 	private String address;
 	@NotBlank(groups = ValidGroup1.class)
-	@Pattern(regexp = "/^\\d{10}$/|/^\\d{11}$/", groups = ValidGroup2.class)
+	@Pattern(regexp = "^0\\d{9,10}$", groups = ValidGroup2.class)
 	private String phoneNumber;
 	@Email
 	private String email;
