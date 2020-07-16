@@ -41,4 +41,9 @@ public class WorshipService {
 		this.worshipDao.update(worship);
 		return worship; 
 	}
+	
+	public String searchBySupporterName(String SupporterName) {
+		worshipDao.searchBySupporterName(SupporterName);
+		return SupporterName;
+	}
 }

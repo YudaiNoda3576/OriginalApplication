@@ -14,6 +14,8 @@ import org.seasar.doma.boot.ConfigAutowireable;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 
+import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
+
 
 
 
@@ -29,6 +31,9 @@ public interface WorshipDao {
 	
 	@Select
 	Worship findByWorshipId(Integer worshipId);
+	
+	@Select
+	List<SupporterWorship> searchBySupporterName(String SupporterName);
 	
 //	お参り予定の完了・未完了判定用のメソッド
 	@Update
