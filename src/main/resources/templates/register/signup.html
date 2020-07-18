@@ -37,7 +37,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('templeId')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{templeId}"
-									placeholder="お好きな値をご入力ください。南無。" /> <span class="text-danger"
+									placeholder="お好きな値をご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('templeId')}"
 									th:errors="*{templeId}">IDエラー</span>
 							</div>
@@ -50,7 +50,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('password')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{password}"
-									placeholder="半角英数字でご入力ください。南無。" /> <span class="text-danger"
+									placeholder="半角英数字でご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('password')}"
 									th:errors="*{password}">パスワードエラー</span>
 							</div>
@@ -63,7 +63,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('templeName')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{templeName}"
-									placeholder="ご自身の所属寺院をご入力ください。南無。" /> <span class="text-danger"
+									placeholder="ご自身の所属寺院をご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('templeName')}"
 									th:errors="*{templeName}">寺院名エラー</span>
 							</div>
@@ -76,7 +76,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('denomination')}?'has-error'">
 								<input type="text" class="form-control"
-									th:field="*{denomination}" placeholder="ご自身の所属宗派をご入力ください。南無。" />
+									th:field="*{denomination}" placeholder="ご自身の所属宗派をご入力ください。" />
 								<span class="text-danger"
 									th:if="${#fields.hasErrors('denomination')}"
 									th:errors="*{denomination}">宗派名エラー</span>
@@ -90,7 +90,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('monkName')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{monkName}"
-									placeholder="氏名をご入力ください。南無。" /> <span class="text-danger"
+									placeholder="氏名をご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('monkName')}"
 									th:errors="*{monkName}">氏名エラー</span>
 							</div>
@@ -103,7 +103,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('position')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{position}"
-									placeholder="役職をご入力ください。南無。" /> <span class="text-danger"
+									placeholder="役職をご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('position')}"
 									th:errors="*{position}">役職エラー</span>
 							</div>
@@ -116,7 +116,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{postalcode}"
-									placeholder="７桁の半角数字でご入力ください。南無。" /> <span class="text-danger"
+									placeholder="７桁の半角数字でご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('postalcode')}"
 									th:errors="*{postalcode}">郵便番号エラー</span>
 							</div>
@@ -129,7 +129,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('address')}?'has-error'">
 								<input type="text" class="form-control" th:field="*{address}"
-									placeholder="住所をご入力ください。南無。" /> <span class="text-danger"
+									placeholder="住所をご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('address')}" th:errors="*{address}">住所エラー</span>
 							</div>
 						</td>
@@ -141,7 +141,7 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('email')}?'has-error'">
 								<input type="email" class="form-control" th:field="*{email}"
-									placeholder="メールアドレスをご入力ください。南無。" /> <span class="text-danger"
+									placeholder="メールアドレスをご入力ください。" /> <span class="text-danger"
 									th:if="${#fields.hasErrors('email')}" th:errors="*{email}">メールアドレスエラー</span>
 							</div>
 						</td>

@@ -14,27 +14,12 @@
 			<h1>お参り一覧</h1>
 		</div>
 		
-		<form action="#" method="get" th:object="${}">
-			<h1>検索ボックス</h1>
-
-			<ul>
-				<li th:each="error: ${#fields.detailedErrors()}" th:text="${error.message}"></li>
-			</ul>
-			
-			<span th:text="#{taskName}">タスク名</span>:
-			<input type="search" name="taskName" th:value="*{taskName}">
-			<span th:text="#{day}">期日</span>:
-			<input type="date" name="day" th:value="*{day}">
-			<span th:text="#{prioritize}">優先度</span>:
-			<select id="type" name="type">
-            <option value="">--</option>
-            <option th:each="prioritize : *{prioritizes}" th:value="${prioritize.value}"
-                    th:selected="${prioritize.value} == *{type}"
-                    th:text="${prioritize.label}"></option>
-			</select>
-			  
-			<button type="submit" th:text="#{search}">検索</button>			
+		<form action="/schedule" method="get" th:object="${supporterForm}">
+			<input type="search" name="supporterName" 
+			th:value="*{supporterName}" placeholder="檀徒氏名を入力して下さい">  
+			<button type="submit">検索</button>			
 		</form>
+		<br>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
 				<th class="info col-sm-2" th:text="#{supporterName}">檀徒氏名</th>

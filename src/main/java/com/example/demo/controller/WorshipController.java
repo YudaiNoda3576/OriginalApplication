@@ -20,6 +20,7 @@ import com.example.demo.domain.WorshipOpts;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 import com.example.demo.form.GroupOrder;
+import com.example.demo.form.SupporterForm;
 import com.example.demo.form.WorshipForm;
 import com.example.demo.service.IdNotExistException;
 import com.example.demo.service.TempleService;
@@ -36,8 +37,9 @@ public class WorshipController {
 
 
 	@GetMapping("/schedule")
-	public String getSchedule(Model model) {
+	public String getSchedule(Model model, @ModelAttribute SupporterForm supporterForm) {
 		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
+		List<SupporterWorship> worshipListSearchedByName = worshipService.searchBySupporterName(supporterForm.getSupporterName());
 		model.addAttribute("contents", "worship/worshipList :: worshipList_contents");
 		model.addAttribute("worshipList", worshipList);
 		return "home/homeLayout";

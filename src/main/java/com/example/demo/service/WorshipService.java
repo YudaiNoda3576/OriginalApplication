@@ -42,8 +42,8 @@ public class WorshipService {
 		return worship; 
 	}
 	
-	public String searchBySupporterName(String SupporterName) {
+	public List<SupporterWorship> searchBySupporterName(String SupporterName) {
 		worshipDao.searchBySupporterName(SupporterName);
-		return SupporterName;
+		return this.worshipDao.searchBySupporterName(SupporterName);
 	}
 }
