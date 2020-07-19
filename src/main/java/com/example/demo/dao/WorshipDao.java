@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
@@ -14,7 +15,6 @@ import org.seasar.doma.boot.ConfigAutowireable;
 import com.example.demo.entity.SupporterWorship;
 import com.example.demo.entity.Worship;
 
-import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 
 
 
@@ -33,7 +33,7 @@ public interface WorshipDao {
 	Worship findByWorshipId(Integer worshipId);
 	
 	@Select
-	List<SupporterWorship> searchBySupporterName(String SupporterName);
+	List<SupporterWorship> searchBySupporterName(String supporterName);
 	
 //	お参り予定の完了・未完了判定用のメソッド
 	@Update

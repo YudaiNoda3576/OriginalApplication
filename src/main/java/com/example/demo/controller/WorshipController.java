@@ -37,11 +37,18 @@ public class WorshipController {
 
 
 	@GetMapping("/schedule")
-	public String getSchedule(Model model, @ModelAttribute SupporterForm supporterForm) {
+	public String getSchedule(Model model) {
 		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
-		List<SupporterWorship> worshipListSearchedByName = worshipService.searchBySupporterName(supporterForm.getSupporterName());
 		model.addAttribute("contents", "worship/worshipList :: worshipList_contents");
 		model.addAttribute("worshipList", worshipList);
+		return "home/homeLayout";
+	}
+	
+	@GetMapping("/worshipSearchList")
+	public String getSearchSchedule(Model model, SupporterForm supporterForm) {
+		List<SupporterWorship> worshipListSearchedByName = worshipService.searchBySupporterName(supporterForm.getSupporterName());
+		model.addAttribute("contents", "worship/worshipSearchList :: worshipSearchList_contents");
+		model.addAttribute("worshipSearchList", worshipListSearchedByName);
 		return "home/homeLayout";
 	}
 
