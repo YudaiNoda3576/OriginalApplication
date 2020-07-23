@@ -29,7 +29,6 @@ public class SupporterWorship {
 
 	
 	
-
 	public Integer getWorshipId() {
 		return worshipId;
 	}

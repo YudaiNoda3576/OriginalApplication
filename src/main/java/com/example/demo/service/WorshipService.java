@@ -18,11 +18,6 @@ public class WorshipService {
 	WorshipDao worshipDao;
 	@Autowired
 	SupporterService supporterService;
-	
-	
-	public List<SupporterWorship> findScheduleWithSupporter() {
-		return this.worshipDao.findScheduleWithSupporter();
-	}
 //	例外のハンドリングは基本的にController
 //	Serviceはシンプルに記述　→　誰に使われるか分からない/できるだけ曖昧に書く
 	@Transactional

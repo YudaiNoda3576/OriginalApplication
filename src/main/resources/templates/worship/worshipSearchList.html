@@ -13,10 +13,9 @@
 		<div class="page-header">
 			<h1>お参り一覧</h1>
 		</div>
-		<form action="/search" method="get" th:object="${worshipSearchList}">
+		<form action="/worshipSearchList" method="get" th:object="${supporterWorship}">
 			<input type="search" name="supporterName" 
-			 placeholder="檀徒氏名を入力して下さい">  
-			 <!-- th:value="*{supporterName}" -->
+			 placeholder="檀徒氏名で検索" th:value="*{supporterName}" >
 			<button type="submit">検索</button>			
 		</form>
 		<br>

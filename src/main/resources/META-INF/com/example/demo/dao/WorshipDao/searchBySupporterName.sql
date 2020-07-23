@@ -3,9 +3,12 @@ select
 from supporter as s
 inner join worship as w
 on  s.supporter_id = w.supporter_id
-where s.supporter_name = /*supporterName*/'野田雄大'
+where 
 /*%if supporterName != null*/
-	Like /* @infix(supporterName) */'supporterName'
+  s.supporter_name  Like /* @infix(supporterName) */'%野田%'
 /*%end*/
+
+
+
 
 

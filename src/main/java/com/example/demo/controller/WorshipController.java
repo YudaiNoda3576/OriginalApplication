@@ -35,18 +35,9 @@ public class WorshipController {
 	@Autowired
 	TempleService templeService;
 
-
-	@GetMapping("/schedule")
-	public String getSchedule(Model model) {
-		List<SupporterWorship> worshipList = worshipService.findScheduleWithSupporter();
-		model.addAttribute("contents", "worship/worshipList :: worshipList_contents");
-		model.addAttribute("worshipList", worshipList);
-		return "home/homeLayout";
-	}
-	
 	@GetMapping("/worshipSearchList")
-	public String getSearchSchedule(Model model, SupporterForm supporterForm) {
-		List<SupporterWorship> worshipListSearchedByName = worshipService.searchBySupporterName(supporterForm.getSupporterName());
+	public String getSearchSchedule(Model model, @ModelAttribute SupporterWorship supporterWorship) {
+		List<SupporterWorship> worshipListSearchedByName = worshipService.searchBySupporterName(supporterWorship.getSupporterName());
 		model.addAttribute("contents", "worship/worshipSearchList :: worshipSearchList_contents");
 		model.addAttribute("worshipSearchList", worshipListSearchedByName);
 		return "home/homeLayout";
