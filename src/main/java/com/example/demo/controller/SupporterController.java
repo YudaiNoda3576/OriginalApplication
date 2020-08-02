@@ -38,7 +38,8 @@ public class SupporterController {
 	@Autowired 
 	private TempleService templeService;
 
-	
+//	寺院IDに紐づく檀徒の情報を取得して一覧表示
+//	ログイン情報はUserDetailsクラスに保存されているので、そこから値を取得する必要がある
 	@GetMapping("/supporterList")
 	public String List(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 		Temple temple = templeService.findByLoginId(userDetails.getUsername());
@@ -49,13 +50,13 @@ public class SupporterController {
 		return "home/homeLayout";
 	}
 	
-	
+//	登録済みの檀徒の情報を表示
 	@GetMapping("/supporterInsert")
 	public String getInsert(@ModelAttribute SupporterForm supporterForm, Model model) {
 		model.addAttribute("contents", "supporter/insertSupporter :: supporter_contents");
 		return "home/homeLayout";
 	}
-	
+//	檀徒の情報を登録して保存
 	@PostMapping("/supporterInsert")
 	public String postInsert(@ModelAttribute @Validated(GroupOrder.class) SupporterForm supporterForm, 
 			BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes, @AuthenticationPrincipal UserDetails userDetails) {
