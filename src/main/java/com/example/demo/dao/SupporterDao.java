@@ -16,6 +16,11 @@ public interface SupporterDao {
 	@Insert
 	int insert(Supporter supporter);
 
+//	寺院Idに紐づく檀徒の一覧を取得するメソッド
 	@Select
 	List<Supporter> findByTempleId(Integer templeId);
+
+//	檀信徒を一見取得するメソッド
+	@Select
+	Supporter findBySupporterId(Integer supporterId);
 }

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
 <head>
 <meta charset="UTF-8"></meta>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <title>Supporters</title>
 </head>
 <body>
@@ -20,7 +22,9 @@
 				<th class="info col-sm-2" th:text="#{address}">住所</th>
 				<th class="info col-sm-2" th:text="#{phoneNumber}">電話番号</th>
 				<th class="info col-sm-2" th:text="#{email}">メールアドレス</th>
+				<th class="info col-sm-2"></th>  
 				<th class="info col-sm-2"></th>    
+				  
 			</tr>
 			<tr th:each="supporter : ${supporterList}">
 				<td th:text="${supporter.supporterId}"></td>
@@ -31,10 +35,17 @@
 				<td th:text="${supporter.phoneNumber}"></td>
 				<td th:text="${supporter.email}"></td>
 				<td>
-                    <a class="btn btn-primary" th:href="@{'/worship/' + ${supporter.supporterId}}">
-                        予定登録
-                    </a>
+                    <a class="btn btn-success showSupporterDetail" th:href="@{'/supporterDetail/' + ${supporter.supporterId}}">
+                        詳細
+                    </a>                   
                 </td>
+                
+				<td>
+					 <a class="btn btn-primary" th:href="@{'/worship/' + ${supporter.supporterId}}">
+					 	予定登録
+					 </a>
+				</td>
+                
 			</tr>
 		</table>
 	</div>

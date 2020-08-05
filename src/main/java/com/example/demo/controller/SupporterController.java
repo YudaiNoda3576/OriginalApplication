@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,6 +24,7 @@ import com.example.demo.form.GroupOrder;
 import com.example.demo.form.SupporterForm;
 import com.example.demo.service.SupporterService;
 import com.example.demo.service.TempleService;
+
 
 
 @Controller
@@ -47,6 +50,24 @@ public class SupporterController {
 		model.addAttribute("contents", "supporter/supporterList :: supporterList_contents");
 		model.addAttribute("supporterList", supporterList);
 
+		return "home/homeLayout";
+	}
+	
+	@GetMapping("/supporterDetail/{id}")
+	public String getSupporterDetail(@ModelAttribute SupporterForm supporterForm, Model model,
+			@PathVariable("id")Integer supporterId) {
+		model.addAttribute("contents", "supporter/supporterDetail :: supporterDetail_contents");
+		if(supporterId != null) {
+			Supporter supporter = supporterService.findBySupporterId(supporterId);
+			supporterForm.setSupporterName(supporter.getSupporterName());
+			supporterForm.setOwnerName(supporter.getOwnerName());
+			supporterForm.setPostalcode(supporter.getPostalcode());
+			supporterForm.setAddress(supporter.getAddress());
+			supporterForm.setPhoneNumber(supporter.getPhoneNumber());
+			supporterForm.setEmail(supporter.getEmail());
+			
+			model.addAttribute("supporterForm", supporterForm);
+		}
 		return "home/homeLayout";
 	}
 	
