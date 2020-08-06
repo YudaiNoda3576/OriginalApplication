@@ -3,8 +3,7 @@ package com.example.demo.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
+
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 
@@ -30,8 +28,8 @@ import com.example.demo.service.TempleService;
 
 @Transactional
 @SpringBootTest
-@TestPropertySource(locations = "classpath:test.properties")
 @AutoConfigureMockMvc
+
 public class TempleControllerTest {
 
 	@MockBean
@@ -46,15 +44,15 @@ public class TempleControllerTest {
 		       .andExpect(status().isOk())
 		       .andExpect(view().name("register/signup.html"));
 	}
-	@Test
-	public void 新規登録が完了したら画面遷移すること() throws Exception {
-		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
-				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
-				                       .param("position", "住職").param("postalcode", "444-4444")
-				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
-				                       .andExpect(status().isOk())
-				                       .andExpect(flash().attribute("success", "登録が完了しました"));
-	}
+//	@Test
+//	public void 新規登録が完了したら画面遷移すること() throws Exception {
+//		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
+//				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
+//				                       .param("position", "住職").param("postalcode", "444-4444")
+//				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
+//				                       .andExpect(status().isOk())
+//				                       .andExpect(flash().attribute("success", "登録が完了しました"));
+//	}
 
 	
 	
