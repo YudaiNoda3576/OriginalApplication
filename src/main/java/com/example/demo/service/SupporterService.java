@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
-
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +21,6 @@ public class SupporterService {
 		this.supporterDao = supporterDao;
 	}
 	
-
-	
 	@Transactional
 	public Supporter insert(Supporter supporter) {
 		supporterDao.insert(supporter);
@@ -38,6 +36,19 @@ public class SupporterService {
 	public Supporter findBySupporterId(Integer supporterId) {
 		return this.supporterDao.findBySupporterId(supporterId);
 	}
-	
 
+	@Transactional
+	public Supporter update(Supporter supporter) {
+		supporterDao.update(supporter);
+		return supporter;
+	}
+
+//	@Transactional
+//	public void deleteBySupporterId(Supporter supporter) {
+//		if(supporter != null) {
+//		supporterDao.deleteById(supporter);
+//		} else {
+//			throw new IdNotExistException("檀徒IDが存在しません");
+//		}
+//	}
 }

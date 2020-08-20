@@ -100,7 +100,9 @@
 						</td>
 					</tr>
 				</table>
-				<button class="btn btn-primary" type="submit">更新</button>         
+				<input type="hidden" name="supporterId" th:field="*{supporterId}">
+				<button class="btn btn-primary" type="submit" name="update">更新</button>
+				<!-- <button class="btn btn-danger" type="submit" name="delete">削除</button> -->         
 			</form>
 		</div>
 	</div>
