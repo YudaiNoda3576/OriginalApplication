@@ -38,17 +38,17 @@ public class TempleControllerTest {
 		       .andExpect(status().isOk())
 		       .andExpect(view().name("register/signup.html"));
 	}
-	@Test
-	public void 新規登録が完了したら画面遷移すること() throws Exception {
-		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
-				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
-				                       .param("position", "住職").param("postalcode", "444-4444")
-				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
-				                       .andExpect(status().isOk())
-				                       .andExpect(flash().attribute("success", "登録が完了しました"));
-	}
-
-	
+//	@Test
+//	public void 新規登録が完了したら画面遷移すること() throws Exception {
+//		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
+//				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
+//				                       .param("position", "住職").param("postalcode", "444-4444")
+//				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
+//				                       .andExpect(status().isOk())
+//				                       .andExpect(flash().attribute("success", "登録が完了しました"));
+//	}
+//
+//	
 	
 //  テスト用のエンティティクラスの作成  
 	public Temple makeTemple(String password, String templeName, String denomination, 
