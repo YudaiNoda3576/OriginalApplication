@@ -19,7 +19,7 @@ public class WorshipService {
 	@Autowired
 	SupporterService supporterService;
 //	例外のハンドリングは基本的にController
-//	Serviceはシンプルに記述　→　誰に使われるか分からない/できるだけ曖昧に書く
+//	Serviceはシンプルに記述　→　誰に使われるか分からないからできるだけ曖昧に書く
 	@Transactional
 	public Worship insert(Worship worship) {  
 		worshipDao.insert(worship);

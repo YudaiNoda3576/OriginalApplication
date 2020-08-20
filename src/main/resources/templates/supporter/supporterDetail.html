@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+
+<!-- Bootstrapの設定 -->
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+<title>Detail</title>
+</head>
+
+<body>
+	<div th:fragment="supporterDetail_contents">
+		<div class="col-sm-9">
+			<div class="page-header">
+				<h4>檀信徒詳細</h4>
+			</div>
+			<h6 style="color: blue;" th:text="${success}"></h6>
+			<h6 style="color: red;" th:text="${failed}"></h6>
+			<!-- th:object  Modelに登録されているオブジェクトの受け取り。　th:object="${<ModdelAttributeのキー名>}"-->
+			<form method="post" th:action="@{/supporterDetail}"
+				th:object="${supporterForm}">
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th class="active" th:text="#{supporterName}">檀信徒氏名</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('supporterName')}?'has-error'">
+								<input type="text" class="form-control"
+									th:field="*{supporterName}" placeholder="氏名を入力"/> <span class="text-danger"
+									th:if="${#fields.hasErrors('supporterName')}"
+									th:errors="*{supporterName}">檀信徒氏名エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{ownerName}">施主名</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('ownerName')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{ownerName}"  placeholder="施主名を入力"/>
+								<span class="text-danger"
+									th:if="${#fields.hasErrors('ownerName')}"
+									th:errors="*{ownerName}">寺院名エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{postalcode}">郵便番号</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('postalcode')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{postalcode}" 
+									 placeholder="7桁の半角数字でご入力下さい。"/>
+								<span class="text-danger"
+									th:if="${#fields.hasErrors('postalcode')}"
+									th:errors="*{postalcode}">郵便番号エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{address}">住所</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('address')}?'has-error'">
+								<input type="text" class="form-control" th:field="*{address}" placeholder="住所を入力"/>
+								<span class="text-danger" th:if="${#fields.hasErrors('address')}"
+									th:errors="*{address}">住所エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{phoneNumber}">電話番号</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('phoneNumber')}?'has-error'">
+								<input type="text" class="form-control"
+									th:field="*{phoneNumber}" placeholder="ハイフンを含まない半角数字でご入力下さい"/> <span class="text-danger"
+									th:if="${#fields.hasErrors('phoneNumber')}"
+									th:errors="*{phoneNumber}">電話番号エラー</span>
+							</div>
+						</td>
+					</tr>
+
+					<tr>
+						<th class="active" th:text="#{email}">メールアドレス</th>
+						<td>
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('email')}?'has-error'">
+								<input type="email" class="form-control" th:field="*{email}" placeholder="メールアドレスを入力"/>
+								<span class="text-danger" th:if="${#fields.hasErrors('email')}"
+									th:errors="*{email}">メールアドレスエラー</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<input type="hidden" name="supporterId" th:field="*{supporterId}">
+				<button class="btn btn-primary" type="submit" name="update">更新</button>
+				<!-- <button class="btn btn-danger" type="submit" name="delete">削除</button> -->         
+			</form>
+		</div>
+	</div>
+</body>
+</html>
