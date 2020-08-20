@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:11-jdk-buster-browsers
+      # - image: circleci/openjdk:11-jdk-buster-browsers
+      - image: openkbs/jdk11-mvn-py3
     steps:
     # CI環境上のworking_directryにgitリポジトリをコピーする
       - checkout
@@ -29,12 +30,14 @@ jobs:
           
   test:
     docker:
-      - image: circleci/openjdk:11-jdk-buster-browsers
-      # - image: circleci/mysql:5.7.29
-      #   environment:
-      #     MYSQL_DATABASE: 'TestTempleTaskManager'
-      #     MYSQL_USER: 'root'
-      #     MYSQL_ROOT_PASSWORD: 'wind3576'
+    # ToDoここのバージョンとか間違ってないか確認
+      - image: openkbs/jdk11-mvn-py3
+      - image: circleci/mysql:5.7.29
+      # パスワード記述しない方法がある
+        environment:
+          MYSQL_DATABASE: 'TestTempleTaskManager'
+          MYSQL_USER: 'root'
+          MYSQL_ROOT_PASSWORD: 'wind3576'
     steps:
       - checkout
       - attach_workspace:
