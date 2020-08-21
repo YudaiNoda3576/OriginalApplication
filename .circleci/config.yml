@@ -30,15 +30,21 @@ jobs:
           
   test:
     docker:
-    # ToDoここのバージョンとか間違ってないか確認
+    # ToDoここのバージョンとか間違ってないか確認 →済
       - image: openkbs/jdk11-mvn-py3
       - image: circleci/mysql:5.7.29
       # パスワード記述しない方法がある
+      
         environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_USER: 'root'
-          MYSQL_ROOT_PASSWORD: 'wind3576'
+          MYSQL_ROOT_PASSWORD: ''
     steps:
+    #  - persist_to_workspace:
+          # root: .
+          # paths: .
+          # ここに入ってテストを実行する
       - checkout
       - attach_workspace:
           at: .
