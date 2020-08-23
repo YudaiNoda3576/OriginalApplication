@@ -33,7 +33,6 @@ jobs:
     # ToDoここのバージョンとか間違ってないか確認 →済
       - image: openkbs/jdk11-mvn-py3
       - image: circleci/mysql:5.7.29
-      - image: flyway/flyway
       
         environment:
         # passwordを記述しなくても大丈夫な設定
@@ -52,6 +51,9 @@ jobs:
       - run:
           name: unit test
           command: ./mvnw test
+      - run:
+          name: migrate
+          comand: mvn flyway:migrate -Dfflyway.url=jdbc:mysql://localhost:3306 -Dflyway.user=root -Dflyway.password=''
 
   deploy:
     docker:
