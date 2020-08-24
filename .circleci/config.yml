@@ -3,24 +3,23 @@ version: 2.1
 jobs:
   build:
     docker:
-      # - image: circleci/openjdk:11-jdk-buster-browsers
       - image: openkbs/jdk11-mvn-py3
+      # steps:jobで実行する処理を順番に定義していく
     steps:
     # CI環境上のworking_directryにgitリポジトリをコピーする
       - checkout
       # キャッシュがsave_cacheされていればリストア（バックアップを適用）する
       - restore_cache:
-          # リストアするキャッシュを指定
+          # リストアするキャッシュを指定（keyを指定してデータを保存）keyの中身がよく分からない
           key: maven-v1-{{ checksum "pom.xml" }}
-    # コマンドを実行する
+    # コマンドを実行する 
       - run:
-      # run名
           name: ./mvnw install
-          # コマンドの実行
           command: ./mvnw install
       # パッケージなどのファイルのキャッシュ
       - save_cache:
-          # ファイルのハッシュ値
+          # pathsで指定したディレクトリorファイルをkeyを指定して保存する　
+          # ↑何をしてるの？
           key: maven-v1-{{ checksum "pom.xml" }}
           paths: ~/.m2
       # 一時的にファイルをjob間で共有できるようにする
@@ -30,30 +29,27 @@ jobs:
           
   test:
     docker:
-    # ToDoここのバージョンとか間違ってないか確認 →済
       - image: openkbs/jdk11-mvn-py3
       - image: circleci/mysql:5.7.29
-      
         environment:
-        # passwordを記述しなくても大丈夫な設定
+        # passwordを記述しなくても大丈夫な設定↓
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
-          # MYSQL_USER: 'root'
           MYSQL_ROOT_PASSWORD: ''
     steps:
     #  - persist_to_workspace:
           # root: .
           # paths: .
-          # ↑ここに入ってテストを実行する checkou以降
+          # ↑ここに入ってテストを実行する checkout以降
       - checkout
       - attach_workspace:
           at: .
+      - run: 
+          name: flyway install
+          command:  mvn flyway:migrate -Dflyway.url=dbc:mysql://localhost:3306/TestTempleTaskManager -Dflyway.user=root -Dflyway.password=wind3576
       - run:
           name: unit test
           command: ./mvnw test
-      - run:
-          name: migrate
-          comand: mvn flyway:migrate -Dfflyway.url=jdbc:mysql://localhost:3306 -Dflyway.user=root -Dflyway.password=''
 
   deploy:
     docker:
@@ -64,7 +60,7 @@ jobs:
           name: deploy to heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-
+# ↓jpbをどのような順番で実行して行くのかを記載する
 workflows:
   version: 2.1
   build_and_test:
