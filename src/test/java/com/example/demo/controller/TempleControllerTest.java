@@ -23,7 +23,7 @@ import com.example.demo.service.TempleService;
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(locations = "classpath:test.properties")
+//@TestPropertySource(locations = "classpath:test.properties") 
 public class TempleControllerTest {
 
 	@MockBean
