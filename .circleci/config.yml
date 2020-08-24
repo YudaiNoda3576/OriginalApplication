@@ -18,7 +18,7 @@ jobs:
           command: ./mvnw install
       # パッケージなどのファイルのキャッシュ
       - save_cache:
-          # pathsで指定したディレクトリorファイルをkeyを指定して保存する　
+          # pathsで指定したディレクトリorファイルをkeyを指定して保存する
           # ↑何をしてるの？
           key: maven-v1-{{ checksum "pom.xml" }}
           paths: ~/.m2
@@ -46,7 +46,7 @@ jobs:
           at: .
       - run: 
           name: flyway install
-          command:  flyway migrate -url=dbc:mysql://localhost:3306/TestTempleTaskManager -user=root -password=wind3576
+          command: flyway migrate -url=dbc:mysql://localhost:3306/TestTempleTaskManager -user=root -password=wind3576
       - run:
           name: unit test
           command: ./mvnw test
