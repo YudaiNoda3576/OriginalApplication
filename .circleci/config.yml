@@ -4,6 +4,12 @@ jobs:
   build:
     docker:
       - image: openkbs/jdk11-mvn-py3
+      - image: circleci/mysql:5.7.29
+        environment:
+        # passwordを記述しなくても大丈夫な設定↓
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: 'TestTempleTaskManager'
+          MYSQL_ROOT_PASSWORD: ''
       # steps:jobで実行する処理を順番に定義していく
     steps:
     # CI環境上のworking_directryにgitリポジトリをコピーする
