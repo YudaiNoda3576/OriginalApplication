@@ -44,9 +44,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: 
-          name: flyway install
-          command: flyway migrate -url=dbc:mysql://localhost:3306/TestTempleTaskManager -user=root -password=wind3576
+      # - run: 
+      #     name: flyway install
+          # command: flyway migrate -url=dbc:mysql://localhost:3306/TestTempleTaskManager -user=root -password=wind3576
       - run:
           name: unit test
           command: ./mvnw test
