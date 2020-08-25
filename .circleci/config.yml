@@ -20,16 +20,14 @@ jobs:
             - "09:01:47:8a:a1:97:76:fc:70:ab:55:95:30:69:06:1b"
       # キャッシュがsave_cacheされていればリストア（バックアップを適用）する
       - restore_cache:
-          # リストアするキャッシュを指定（keyを指定してデータを保存）keyの中身がよく分からない
+          # リストアするキャッシュを指定（keyを指定してデータを保存）
           key: maven-v1-{{ checksum "pom.xml" }}
-    # コマンドを実行する 
       - run:
           name: ./mvnw install
           command: ./mvnw install -Dmaven.test.skip=true
       # パッケージなどのファイルのキャッシュ
       - save_cache:
           # pathsで指定したディレクトリorファイルをkeyを指定して保存する
-          # ↑何をしてるの？
           key: maven-v1-{{ checksum "pom.xml" }}
           paths: ~/.m2
       # 一時的にファイルをjob間で共有できるようにする
@@ -47,16 +45,16 @@ jobs:
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_ROOT_PASSWORD: ''
     steps:
-    #  - persist_to_workspace:
-          # root: .
-          # paths: .
-          # ↑ここに入ってテストを実行する checkout以降
-      - checkout
       - attach_workspace:
           at: .
-      # - run: 
-      #     name: flyway install
-          # command: flyway migrate -url=dbc:mysql://localhost:3306/TestTempleTaskManager -user=root -password=wind3576
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: unit test
           command: ./mvnw test
