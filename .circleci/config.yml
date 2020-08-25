@@ -4,12 +4,6 @@ jobs:
   build:
     docker:
       - image: openkbs/jdk11-mvn-py3
-      # - image: circleci/mysql:5.7.29
-      #   environment:
-      #   # passwordを記述しなくても大丈夫な設定↓
-      #     MYSQL_ALLOW_EMPTY_PASSWORD: yes
-      #     MYSQL_DATABASE: 'TestTempleTaskManager'
-      #     MYSQL_ROOT_PASSWORD: ''
       # steps:jobで実行する処理を順番に定義していく
     steps:
     # CI環境上のworking_directryにgitリポジトリをコピーする
@@ -47,14 +41,17 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      # - run:
-      #     name: install dockerize
-      #     command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-      #     environment:
-      #       DOCKERIZE_VERSION: v0.3.0
-      # - run:
-      #     name: Wait for db
-      #     command: dockerize -wait tcp://localhost:3306 -timeout 1m
+       - run:
+          name: install dependecies
+          command: composer install 
+       - run:
+           name: install dockerize
+           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+           environment:
+             DOCKERIZE_VERSION: v0.3.0
+       - run:
+           name: Wait for db
+           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: unit test
           command: ./mvnw test
