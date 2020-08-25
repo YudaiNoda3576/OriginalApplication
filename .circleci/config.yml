@@ -8,6 +8,11 @@ jobs:
     steps:
     # CI環境上のworking_directryにgitリポジトリをコピーする
       - checkout
+      - add_ssh_keys:
+          fingerprints: 
+            - "0e:65:fd:6e:07:a1:8d:ec:3f:e5:9f:5b:4f:ad:3a:25"
+
+
       # キャッシュがsave_cacheされていればリストア（バックアップを適用）する
       - restore_cache:
           # リストアするキャッシュを指定（keyを指定してデータを保存）keyの中身がよく分からない
