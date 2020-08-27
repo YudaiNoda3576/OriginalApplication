@@ -51,8 +51,6 @@ jobs:
            name: Waiting for db to be ready
            command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
-          name: Install MySQL CLI; Create table;
-      - run:
           name: unit test
           command: ./mvnw test
 
