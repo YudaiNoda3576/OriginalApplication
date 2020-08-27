@@ -38,7 +38,7 @@ jobs:
           # MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_PASSWORD: wind3576
-          MYSQL_USER: root
+          
 
     steps:
       - attach_workspace:
