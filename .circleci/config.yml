@@ -52,9 +52,9 @@ jobs:
            command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: Install MySQL CLI; Create table;
-          command: install default-mysql-client && mysql -h 127.0.0.1 -uroot test < schema.sql
-      # - restore_cache:
-      #     key: circleci-test-{{ checksum "pom.xml" }}
+          # command: sudo apt-get install default-mysql-client && mysql -h 127.0.0.1 -uroot test < schema.sql
+      - restore_cache:
+          key: circleci-test-{{ checksum "pom.xml" }}
       # - run: mvn dependency:go-offline
       # - save_cache:
       #     paths:
