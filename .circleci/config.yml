@@ -38,22 +38,17 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_ROOT_PASSWORD: ''
+          command: [--character-set-server=utf8, --collation-server=utf8_general_ci, --default-storage-engine=innodb]
     steps:
       - attach_workspace:
           at: .
-      # - run:
-      #     name: Setup dockerize
-      #     command: bash .circleci/setup-dockerize.sh
-      # - run:
-      #     name: Run Docker containers
-      #     command: yarn build && docker-compose up -d
       - run:
            name: install dockerize
            command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &&  tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
            environment:
              DOCKERIZE_VERSION: v0.3.0
       - run:
-           name: Wait for db
+           name: Wait for db to be ready
            command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: unit test
