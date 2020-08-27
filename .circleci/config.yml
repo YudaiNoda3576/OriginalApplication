@@ -35,9 +35,9 @@ jobs:
       - image: circleci/mysql:5.7.29
         environment:
         # passwordを記述しなくても大丈夫な設定↓
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          # MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
-          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_ROOT_PASSWORD: password
 
     steps:
       - attach_workspace:
