@@ -15,7 +15,7 @@ public interface SupporterDao {
 
 	@Insert
 	int insert(Supporter supporter);
-
+// 寺院IDに紐付く檀徒を一件取得
 	@Select
 	List<Supporter> findByTempleId(Integer templeId);
 }
