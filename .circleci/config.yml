@@ -38,6 +38,8 @@ jobs:
           # MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_ROOT_PASSWORD: password
+          MYSQL_USER: user
+          MYSQL_PASSWORD: noda
 
     steps:
       - attach_workspace:
