@@ -34,10 +34,10 @@ jobs:
       - image: openkbs/jdk11-mvn-py3
       - image: circleci/mysql:5.7.29
         environment:
-        # passwordを記述しなくても大丈夫な設定↓
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: 'TestTempleTaskManager'
-          MYSQL_PASSWORD: ''
+          MYSQL_USER: root
+          MYSQL_PASSWORD: wind3576
+          MYSQL_HOST: 127.0.0.1
           
 
     steps:
