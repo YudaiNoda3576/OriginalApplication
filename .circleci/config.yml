@@ -36,7 +36,7 @@ jobs:
         environment:
           MYSQL_DATABASE: 'TestTempleTaskManager'
           MYSQL_USER: user
-          MYSQL_PASSWORD: wind3576
+          MYSQL_PASSWORD: WinD@3576
           MYSQL_HOST: 127.0.0.1
           
 
