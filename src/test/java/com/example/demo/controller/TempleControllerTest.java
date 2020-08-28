@@ -7,6 +7,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,7 +28,7 @@ import com.example.demo.service.TempleService;
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-//@TestPropertySource(locations = "classpath:test.properties") 
+@TestPropertySource(locations = "classpath:application.properties") 
 public class TempleControllerTest {
 
 	@MockBean
@@ -32,23 +37,28 @@ public class TempleControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
+	@Before
+	private static Connection getConnection() throws Exception{
+	    Connection connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/TestTempleTaskManager","user","WinD@3576");
+	    return connection;
+	}
+	
 	@Test
 	public void 寺院登録用フォームが表示されること() throws Exception {
 		mockMvc.perform(get("/signup"))
 		       .andExpect(status().isOk())
 		       .andExpect(view().name("register/signup.html"));
 	}
-//	@Test
-//	public void 新規登録が完了したら画面遷移すること() throws Exception {
-//		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
-//				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
-//				                       .param("position", "住職").param("postalcode", "444-4444")
-//				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
-//				                       .andExpect(status().isOk())
-//				                       .andExpect(flash().attribute("success", "登録が完了しました"));
-//	}
-//
-//	
+	@Test
+	public void フォームからデータが正しく保存されること() throws Exception {
+		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
+				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
+				                       .param("position", "住職").param("postalcode", "444-4444")
+				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
+				                      ;
+	}
+
+	
 	
 //  テスト用のエンティティクラスの作成  
 	public Temple makeTemple(String password, String templeName, String denomination, 
