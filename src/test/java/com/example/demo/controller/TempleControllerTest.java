@@ -3,15 +3,14 @@ package com.example.demo.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
-import org.junit.Before;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -36,12 +35,6 @@ public class TempleControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-	
-	@Before
-	private static Connection getConnection() throws Exception{
-	    Connection connection=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/TestTempleTaskManager","user","WinD@3576");
-	    return connection;
-	}
 	
 	@Test
 	public void 寺院登録用フォームが表示されること() throws Exception {
