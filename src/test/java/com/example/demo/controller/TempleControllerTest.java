@@ -54,8 +54,7 @@ public class TempleControllerTest {
 		mockMvc.perform(post("/signup").param("password", "yudainoda").param("templeName", "林床寺")
 				                       .param ("denpmination","臨済宗").param("monkName", "野田義男")
 				                       .param("position", "住職").param("postalcode", "444-4444")
-				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"))
-				                      ;
+				                       .param("address", "愛知県春日井市").param("email", "noda@gmail.com"));
 	}
 
 	
